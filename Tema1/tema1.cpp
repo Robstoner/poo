@@ -76,27 +76,39 @@ public:
              << '\n';
     }
 
-    void operator=(const masinaCurierat &m)
+    masinaCurierat& operator=(const masinaCurierat &m)
     {
+        delete[] marca;
         marca = new char[strlen(m.marca) + 1];
         strcpy(marca, m.marca);
 
+        delete[]marca;
         model = new char[strlen(m.model) + 1];
         strcpy(model, m.model);
 
+        delete[] numarInm;
         numarInm = new char[strlen(m.numarInm) + 1];
         strcpy(numarInm, m.numarInm);
 
+        delete[] dataAchizitiei;
         dataAchizitiei = new char[strlen(m.dataAchizitiei) + 1];
         strcpy(dataAchizitiei, m.dataAchizitiei);
 
+        delete[] ultService;
         ultService = new char[strlen(m.ultService) + 1];
         strcpy(ultService, m.ultService);
+
+        return *this;
     }
 
     friend ostream &operator<<(ostream &os, const masinaCurierat &m)
     {
-        m.afisare();
+        os << m.marca << '\n'
+           << m.model << '\n'
+           << m.numarInm << '\n'
+           << m.dataAchizitiei << '\n'
+           << m.ultService << '\n'
+           << '\n';
 
         return os;
     }
@@ -107,7 +119,7 @@ public:
         char tmp[500];
         cout << "Marca: ";
         cin >> tmp;
-        delete m.marca;
+        delete[] m.marca;
         m.marca = new char[strlen(tmp) + 1];
         strcpy(m.marca, tmp);
 
@@ -115,40 +127,42 @@ public:
 
         cout << "Modelul: ";
         cin.getline(tmp, 256, '\n');
-        delete m.model;
+        delete[] m.model;
         m.model = new char[strlen(tmp) + 1];
         strcpy(m.model, tmp);
 
         cout << "Numarul de inmatriculare: ";
         cin.getline(tmp, 256, '\n');
-        delete m.numarInm;
+        delete[] m.numarInm;
         m.numarInm = new char[strlen(tmp) + 1];
         strcpy(m.numarInm, tmp);
 
         cout << "Data achizitiei: ";
         cin >> tmp;
-        delete m.dataAchizitiei;
+        delete[] m.dataAchizitiei;
         m.dataAchizitiei = new char[strlen(tmp) + 1];
         strcpy(m.dataAchizitiei, tmp);
 
         cout << "Data ultimului service: ";
         cin >> tmp;
-        delete m.ultService;
+        delete[] m.ultService;
         m.ultService = new char[strlen(tmp) + 1];
         strcpy(m.ultService, tmp);
 
         return is;
     }
 
-    friend bool operator==(masinaCurierat &a, masinaCurierat &b)
+    bool operator==(masinaCurierat &b) const
     {
-        if (strcmp(a.marca, b.marca) || strcmp(a.model, b.model) || strcmp(a.numarInm, b.numarInm) || strcmp(a.dataAchizitiei, b.dataAchizitiei) || strcmp(a.ultService, b.ultService)) return false;
+        if (strcmp(marca, b.marca) || strcmp(model, b.model) || strcmp(numarInm, b.numarInm) || strcmp(dataAchizitiei, b.dataAchizitiei) || strcmp(ultService, b.ultService))
+            return false;
         return true;
     }
 
-    friend bool operator!=(masinaCurierat &a, masinaCurierat &b)
+    bool operator!=(masinaCurierat &b) const
     {
-        if (!(strcmp(a.marca, b.marca) || strcmp(a.model, b.model) || strcmp(a.numarInm, b.numarInm) || strcmp(a.dataAchizitiei, b.dataAchizitiei) || strcmp(a.ultService, b.ultService))) return false;
+        if (!(strcmp(marca, b.marca) || strcmp(model, b.model) || strcmp(numarInm, b.numarInm) || strcmp(dataAchizitiei, b.dataAchizitiei) || strcmp(ultService, b.ultService)))
+            return false;
         return true;
     }
 
@@ -164,46 +178,46 @@ public:
 
     void setMarca(char *marca_)
     {
-        delete marca;
+        delete[] marca;
         marca = new char[strlen(marca_) + 1];
         strcpy(marca, marca_);
     }
 
     void setModel(char *model_)
     {
-        delete model;
+        delete[] model;
         model = new char[strlen(model_) + 1];
         strcpy(model, model_);
     }
 
     void setNumarInm(char *numarInm_)
     {
-        delete numarInm;
+        delete[] numarInm;
         numarInm = new char[strlen(numarInm_) + 1];
         strcpy(numarInm, numarInm_);
     }
 
     void setDataAchizitiei(char *dataAchizitiei_)
     {
-        delete dataAchizitiei;
+        delete[] dataAchizitiei;
         dataAchizitiei = new char[strlen(dataAchizitiei_) + 1];
         strcpy(dataAchizitiei, dataAchizitiei_);
     }
 
     void setUltService(char *ultService_)
     {
-        delete ultService;
+        delete[] ultService;
         ultService = new char[strlen(ultService_) + 1];
         strcpy(ultService, ultService_);
     }
 
     ~masinaCurierat()
     {
-        delete marca;
-        delete model;
-        delete numarInm;
-        delete dataAchizitiei;
-        delete ultService;
+        delete[] marca;
+        delete[] model;
+        delete[] numarInm;
+        delete[] dataAchizitiei;
+        delete[] ultService;
     }
 };
 
@@ -256,20 +270,28 @@ public:
         masina.afisare();
     }
 
-    void operator=(const curier &c)
+    curier& operator=(const curier &c)
     {
         masina = c.masina;
 
+        delete[] nume;
         nume = new char[strlen(c.nume) + 1];
         strcpy(nume, c.nume);
 
         salariu = c.salariu;
         nrComenzi = c.nrComenzi;
+
+        return *this;
     }
 
     friend ostream &operator<<(ostream &os, const curier &c)
     {
-        c.afisare();
+        os << "--Curier" << '\n';
+        os << c.nume << '\n'
+           << c.salariu << '\n'
+           << c.nrComenzi << '\n';
+        os << "--Masina curierului\n";
+        os << c.masina;
 
         return os;
     }
@@ -282,7 +304,7 @@ public:
         cout << "Numele: ";
         cin.ignore(1, '\n');
         cin.getline(tmp, 99, '\n');
-        delete c.nume;
+        delete[] c.nume;
         c.nume = new char[strlen(tmp) + 1];
         strcpy(c.nume, tmp);
 
@@ -296,24 +318,24 @@ public:
         return is;
     }
 
-    friend bool operator==(curier &a, curier &b)
+    bool operator==(curier &b) const
     {
-        if (a.masina != b.masina)
+        if (masina != b.masina)
             return false;
-        if (strcmp(a.nume, b.nume))
+        if (strcmp(nume, b.nume))
             return false;
-        if ((a.salariu != b.salariu) || (a.nrComenzi != b.nrComenzi))
+        if ((salariu != b.salariu) || (nrComenzi != b.nrComenzi))
             return false;
         return true;
     }
 
-    friend bool operator!=(curier &a, curier &b)
+    bool operator!=(curier &b) const
     {
-        if (a.masina != b.masina)
+        if (masina != b.masina)
             return true;
-        if (strcmp(a.nume, b.nume))
+        if (strcmp(nume, b.nume))
             return true;
-        if ((a.salariu != b.salariu) || (a.nrComenzi != b.nrComenzi))
+        if ((salariu != b.salariu) || (nrComenzi != b.nrComenzi))
             return true;
         return false;
     }
@@ -331,6 +353,7 @@ public:
 
     void setNume(char *nume_)
     {
+        delete[] nume;
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
     }
@@ -421,8 +444,14 @@ public:
         }
     }
 
-    void operator=(const firmaCurierat &f)
+    firmaCurierat& operator=(const firmaCurierat &f)
     {
+        for (int i = 0; i < nrCurieri; ++i)
+        {
+            delete curieri[i];
+        }
+        delete[] curieri;
+
         curieri = new curier *[f.nrCurieri];
         for (int i = 0; i < f.nrCurieri; ++i)
         {
@@ -433,16 +462,28 @@ public:
         nrCurieri = f.nrCurieri;
         nrComenzi = f.nrComenzi;
 
+        delete[] locatie;
         locatie = new char[strlen(f.locatie) + 1];
         strcpy(locatie, f.locatie);
 
+        delete[] numeComplet;
         numeComplet = new char[strlen(f.numeComplet) + 1];
         strcpy(numeComplet, f.numeComplet);
+
+        return *this;
     }
 
     friend ostream &operator<<(ostream &os, const firmaCurierat &f)
     {
-        f.afisare();
+        // f.afisare();
+
+        os << f.numeComplet << '\n'
+           << f.locatie << '\n'
+           << f.nrComenzi << '\n';
+        for (int i = 0; i < f.nrCurieri; ++i)
+        {
+            os << *f.curieri[i];
+        }
 
         return os;
     }
@@ -454,13 +495,13 @@ public:
         char tmp[100];
         cout << "Numele complet: ";
         cin.getline(tmp, 99, '\n');
-        delete f.numeComplet;
+        delete[] f.numeComplet;
         f.numeComplet = new char[strlen(tmp) + 1];
         strcpy(f.numeComplet, tmp);
 
         cout << "Locatia: ";
         cin.getline(tmp, 99, '\n');
-        delete f.locatie;
+        delete[] f.locatie;
         f.locatie = new char[strlen(tmp) + 1];
         strcpy(f.locatie, tmp);
 
@@ -481,60 +522,64 @@ public:
         return is;
     }
 
-    friend bool operator==(firmaCurierat &a, firmaCurierat &b)
+    bool operator==(firmaCurierat &b) const
     {
-        if ((a.nrCurieri != b.nrCurieri) || (a.nrComenzi != b.nrComenzi))
+        if ((nrCurieri != b.nrCurieri) || (nrComenzi != b.nrComenzi))
             return false;
-        if (strcmp(a.numeComplet, b.numeComplet) || strcmp(a.locatie, b.locatie))
+        if (strcmp(numeComplet, b.numeComplet) || strcmp(locatie, b.locatie))
             return false;
-        for(int i = 0; i < a.nrCurieri; ++i)
+        for (int i = 0; i < nrCurieri; ++i)
         {
-            if (*a.curieri[i] != *b.curieri[i])
+            if (*curieri[i] != *b.curieri[i])
                 return false;
         }
         return true;
     }
 
-    friend bool operator!=(firmaCurierat &a, firmaCurierat &b)
+    bool operator!=(firmaCurierat &b) const
     {
-        if ((a.nrCurieri != b.nrCurieri) || (a.nrComenzi != b.nrComenzi))
+        if ((nrCurieri != b.nrCurieri) || (nrComenzi != b.nrComenzi))
             return true;
-        if (strcmp(a.numeComplet, b.numeComplet) || strcmp(a.locatie, b.locatie))
+        if (strcmp(numeComplet, b.numeComplet) || strcmp(locatie, b.locatie))
             return true;
-        for(int i = 0; i < a.nrCurieri; ++i)
+        for (int i = 0; i < nrCurieri; ++i)
         {
-            if (*a.curieri[i] != *b.curieri[i])
+            if (*curieri[i] != *b.curieri[i])
                 return true;
         }
         return false;
+
+       // return !(*this == b);
     }
 
-    char *getNumeComplet() const { return numeComplet; }
+    const char *getNumeComplet() const { return numeComplet; }
 
-    char *getLocatie() const { return locatie; }
+    const char *getLocatie() const { return locatie; }
 
-    int getNrComenzi() const { return nrComenzi; }
+    const int getNrComenzi() const { return nrComenzi; }
 
-    int getNrCurieri() const { return nrCurieri; }
+    const int getNrCurieri() const { return nrCurieri; }
 
     void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
 
     void setLocatie(char *locatie_)
     {
+        delete[] locatie;
         locatie = new char[strlen(locatie_) + 1];
         strcpy(locatie, locatie_);
     }
 
     void setNumeComplet(char *numeComplet_)
     {
+        delete[] numeComplet;
         numeComplet = new char[strlen(numeComplet_) + 1];
         strcpy(numeComplet, numeComplet_);
     }
 
     ~firmaCurierat()
     {
-        delete locatie;
-        delete numeComplet;
+        delete[] locatie;
+        delete[] numeComplet;
         for (int i = 0; i < nrCurieri; ++i)
         {
             delete curieri[i];
@@ -576,9 +621,9 @@ int main()
     // cin >> B;
     // cout << B;
 
-    // firmaCurierat C;
+    firmaCurierat C;
 
-    // cout << C;
+    cout << C;
 
     // cin >> C;
 
