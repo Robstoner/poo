@@ -1,0 +1,3 @@
+toate clasele private
+altfel restanta
+functiile din clase merg publice
