@@ -76,13 +76,13 @@ public:
              << '\n';
     }
 
-    masinaCurierat& operator=(const masinaCurierat &m)
+    masinaCurierat &operator=(const masinaCurierat &m)
     {
         delete[] marca;
         marca = new char[strlen(m.marca) + 1];
         strcpy(marca, m.marca);
 
-        delete[]marca;
+        delete[] model;
         model = new char[strlen(m.model) + 1];
         strcpy(model, m.model);
 
@@ -118,33 +118,33 @@ public:
         cout << "Introduceti datele masinii:\n";
         char tmp[500];
         cout << "Marca: ";
-        cin >> tmp;
+        is >> tmp;
         delete[] m.marca;
         m.marca = new char[strlen(tmp) + 1];
         strcpy(m.marca, tmp);
 
-        cin.ignore(1, '\n');
+        is.ignore(1, '\n');
 
         cout << "Modelul: ";
-        cin.getline(tmp, 256, '\n');
+        is.getline(tmp, 256, '\n');
         delete[] m.model;
         m.model = new char[strlen(tmp) + 1];
         strcpy(m.model, tmp);
 
         cout << "Numarul de inmatriculare: ";
-        cin.getline(tmp, 256, '\n');
+        is.getline(tmp, 256, '\n');
         delete[] m.numarInm;
         m.numarInm = new char[strlen(tmp) + 1];
         strcpy(m.numarInm, tmp);
 
         cout << "Data achizitiei: ";
-        cin >> tmp;
+        is >> tmp;
         delete[] m.dataAchizitiei;
         m.dataAchizitiei = new char[strlen(tmp) + 1];
         strcpy(m.dataAchizitiei, tmp);
 
         cout << "Data ultimului service: ";
-        cin >> tmp;
+        is >> tmp;
         delete[] m.ultService;
         m.ultService = new char[strlen(tmp) + 1];
         strcpy(m.ultService, tmp);
@@ -270,7 +270,7 @@ public:
         masina.afisare();
     }
 
-    curier& operator=(const curier &c)
+    curier &operator=(const curier &c)
     {
         masina = c.masina;
 
@@ -302,18 +302,18 @@ public:
 
         char tmp[100];
         cout << "Numele: ";
-        cin.ignore(1, '\n');
-        cin.getline(tmp, 99, '\n');
+        is.ignore(1, '\n');
+        is.getline(tmp, 99, '\n');
         delete[] c.nume;
         c.nume = new char[strlen(tmp) + 1];
         strcpy(c.nume, tmp);
 
         cout << "Salariul: ";
-        cin >> c.salariu;
+        is >> c.salariu;
         cout << "Numarul de comenzi zilnice: ";
-        cin >> c.nrComenzi;
+        is >> c.nrComenzi;
 
-        cin >> c.masina;
+        is >> c.masina;
 
         return is;
     }
@@ -339,6 +339,8 @@ public:
             return true;
         return false;
     }
+
+    masinaCurierat getMasina() const { return masina; }
 
     char *getNume() const { return nume; }
 
@@ -444,7 +446,7 @@ public:
         }
     }
 
-    firmaCurierat& operator=(const firmaCurierat &f)
+    firmaCurierat &operator=(const firmaCurierat &f)
     {
         for (int i = 0; i < nrCurieri; ++i)
         {
@@ -475,8 +477,6 @@ public:
 
     friend ostream &operator<<(ostream &os, const firmaCurierat &f)
     {
-        // f.afisare();
-
         os << f.numeComplet << '\n'
            << f.locatie << '\n'
            << f.nrComenzi << '\n';
@@ -494,29 +494,29 @@ public:
 
         char tmp[100];
         cout << "Numele complet: ";
-        cin.getline(tmp, 99, '\n');
+        is.getline(tmp, 99, '\n');
         delete[] f.numeComplet;
         f.numeComplet = new char[strlen(tmp) + 1];
         strcpy(f.numeComplet, tmp);
 
         cout << "Locatia: ";
-        cin.getline(tmp, 99, '\n');
+        is.getline(tmp, 99, '\n');
         delete[] f.locatie;
         f.locatie = new char[strlen(tmp) + 1];
         strcpy(f.locatie, tmp);
 
         cout << "Numarul de comenzi zilnice: ";
-        cin >> f.nrComenzi;
+        is >> f.nrComenzi;
 
         cout << "Numarul de curieri: ";
-        cin >> f.nrCurieri;
+        is >> f.nrCurieri;
 
         f.curieri = new curier *[f.nrCurieri];
 
         for (int i = 0; i < f.nrCurieri; ++i)
         {
             f.curieri[i] = new curier;
-            cin >> *f.curieri[i];
+            is >> *f.curieri[i];
         }
 
         return is;
@@ -549,8 +549,12 @@ public:
         }
         return false;
 
-       // return !(*this == b);
+        // return !(*this == b);
     }
+
+    curier **getCurieri() const { return curieri; }
+
+    curier *getCurier(int x) { return curieri[x]; }
 
     const char *getNumeComplet() const { return numeComplet; }
 
@@ -590,6 +594,86 @@ public:
 
 int main()
 {
+    int x;
+
+    cout << "Introduceti un numar pentru a selecte optiunea dorita:\n"
+         << "1. Inserati o masina de curierat\n"
+         << "2. Inserati un curier\n"
+         << "3. Inserati o firma de curierat\n"
+         << "4. Creati o firma de curierat, apoi setati locatia ei\n"
+         << "5. Introduceti o masina, apoi creati un curier si setati masina respectiva curierului\n"
+
+         << "0. Iesire\n";
+
+    cin >> x;
+    while (x)
+    {
+        switch (x)
+        {
+        case 1:
+        {
+            masinaCurierat A;
+            cout << A;
+            cin >> A;
+            cout << A;
+            return 0;
+        }
+        case 2:
+        {
+            curier A;
+            cout << A;
+            cin >> A;
+            cout << A;
+            return 0;
+        }
+        case 3:
+        {
+            firmaCurierat A;
+            cout << A;
+            cin >> A;
+            cout << A;
+            return 0;
+        }
+        case 4:
+        {
+            firmaCurierat A;
+            cout << A;
+
+            char tmp[100];
+
+            cout << "Introduceti locatia: ";
+            cin >> tmp;
+            A.setLocatie(tmp);
+            cout << A;
+
+            return 0;
+        }
+        case 5:
+        {
+            masinaCurierat A;
+            cout << A;
+            cin >> A;
+            cout << A;
+
+            curier B;
+            cout << B;
+
+            B.setMasina(A);
+            cout << B;
+
+            return 0;
+        }
+        default:
+            cout << "Optiune invalida, introduceti o valoare corecta: ";
+            cin >> x;
+            break;
+        }
+        
+    }
+}
+
+/*int main()
+{
     // masinaCurierat A;
     // cout << A;
 
@@ -621,9 +705,9 @@ int main()
     // cin >> B;
     // cout << B;
 
-    firmaCurierat C;
+    // firmaCurierat C;
 
-    cout << C;
+    // cout << C;
 
     // cin >> C;
 
@@ -654,4 +738,4 @@ int main()
     // firmaCurierat A, B;
     // A.setNrComenzi(25);
     // cout << (A != B);
-}
+}*/
