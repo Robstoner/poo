@@ -594,7 +594,7 @@ public:
 
 int main()
 {
-    int x;
+    int x = 1;
 
     cout << "Introduceti un numar pentru a selecte optiunea dorita:\n"
          << "1. Inserati o masina de curierat\n"
@@ -606,6 +606,7 @@ int main()
          << "0. Iesire\n";
 
     cin >> x;
+
     while (x)
     {
         switch (x)
@@ -664,11 +665,18 @@ int main()
             return 0;
         }
         default:
-            cout << "Optiune invalida, introduceti o valoare corecta: ";
+            cout << "Optiune invalida, introduceti o valoare corecta dintre urmatoarele: ";
+            cout << "Introduceti un numar pentru a selecte optiunea dorita:\n"
+                 << "1. Inserati o masina de curierat\n"
+                 << "2. Inserati un curier\n"
+                 << "3. Inserati o firma de curierat\n"
+                 << "4. Creati o firma de curierat, apoi setati locatia ei\n"
+                 << "5. Introduceti o masina, apoi creati un curier si setati masina respectiva curierului\n"
+
+                 << "0. Iesire\n";
             cin >> x;
             break;
         }
-        
     }
 }
 
