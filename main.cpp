@@ -122,7 +122,9 @@ public:
         cout << "Introduceti datele masinii:\n";
         char tmp[500];
         cout << "Marca: ";
-        is >> tmp;
+        is.ignore(1, '\n');
+        
+        is.get(tmp, 500);
         delete[] m.marca;
         m.marca = new char[strlen(tmp) + 1];
         strcpy(m.marca, tmp);
