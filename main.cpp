@@ -152,14 +152,14 @@ public:
         return is;
     }
 
-    bool operator==(masinaCurierat &b) const
+    bool operator==(const masinaCurierat &b) const
     {
         if (strcmp(marca, b.marca) || strcmp(model, b.model) || strcmp(numarInm, b.numarInm) || strcmp(dataAchizitiei, b.dataAchizitiei) || strcmp(ultService, b.ultService))
             return false;
         return true;
     }
 
-    bool operator!=(masinaCurierat &b) const
+    bool operator!=(const masinaCurierat &b) const
     {
         if (!(strcmp(marca, b.marca) || strcmp(model, b.model) || strcmp(numarInm, b.numarInm) || strcmp(dataAchizitiei, b.dataAchizitiei) || strcmp(ultService, b.ultService)))
             return false;
@@ -317,7 +317,7 @@ public:
         return is;
     }
 
-    bool operator==(curier &b) const
+    bool operator==(const curier &b) const
     {
         if (masina != b.masina)
             return false;
@@ -328,7 +328,7 @@ public:
         return true;
     }
 
-    bool operator!=(curier &b) const
+    bool operator!=(const curier &b) const
     {
         if (masina != b.masina)
             return true;
@@ -523,7 +523,7 @@ public:
         return is;
     }
 
-    bool operator==(firmaCurierat &b) const
+    bool operator==(const firmaCurierat &b) const
     {
         if ((nrCurieri != b.nrCurieri) || (nrComenzi != b.nrComenzi))
             return false;
@@ -537,7 +537,7 @@ public:
         return true;
     }
 
-    bool operator!=(firmaCurierat &b) const
+    bool operator!=(const firmaCurierat &b) const
     {
         if ((nrCurieri != b.nrCurieri) || (nrComenzi != b.nrComenzi))
             return true;
@@ -590,9 +590,9 @@ public:
 
     const char *getLocatie() const { return locatie; }
 
-    const int getNrComenzi() const { return nrComenzi; }
+    int getNrComenzi() const { return nrComenzi; }
 
-    const int getNrCurieri() const { return nrCurieri; }
+    int getNrCurieri() const { return nrCurieri; }
 
     void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
 
