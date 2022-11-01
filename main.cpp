@@ -123,7 +123,7 @@ public:
         char tmp[500];
         cout << "Marca: ";
         is.ignore(1, '\n');
-        
+
         is.get(tmp, 500);
         delete[] m.marca;
         m.marca = new char[strlen(tmp) + 1];
@@ -172,45 +172,45 @@ public:
         return true;
     }
 
-    char *getMarca() const { return marca; }
+    inline char *getMarca() const { return marca; }
 
-    char *getModel() const { return model; }
+    inline char *getModel() const { return model; }
 
-    char *getNumarInm() const { return numarInm; }
+    inline char *getNumarInm() const { return numarInm; }
 
-    char *getDataAchizitiei() const { return dataAchizitiei; }
+    inline char *getDataAchizitiei() const { return dataAchizitiei; }
 
-    char *getUltService() const { return ultService; }
+    inline char *getUltService() const { return ultService; }
 
-    void setMarca(char *marca_)
+    inline void setMarca(char *marca_)
     {
         delete[] marca;
         marca = new char[strlen(marca_) + 1];
         strcpy(marca, marca_);
     }
 
-    void setModel(char *model_)
+    inline void setModel(char *model_)
     {
         delete[] model;
         model = new char[strlen(model_) + 1];
         strcpy(model, model_);
     }
 
-    void setNumarInm(char *numarInm_)
+    inline void setNumarInm(char *numarInm_)
     {
         delete[] numarInm;
         numarInm = new char[strlen(numarInm_) + 1];
         strcpy(numarInm, numarInm_);
     }
 
-    void setDataAchizitiei(char *dataAchizitiei_)
+    inline void setDataAchizitiei(char *dataAchizitiei_)
     {
         delete[] dataAchizitiei;
         dataAchizitiei = new char[strlen(dataAchizitiei_) + 1];
         strcpy(dataAchizitiei, dataAchizitiei_);
     }
 
-    void setUltService(char *ultService_)
+    inline void setUltService(char *ultService_)
     {
         delete[] ultService;
         ultService = new char[strlen(ultService_) + 1];
@@ -348,30 +348,30 @@ public:
 
     masinaCurierat getMasina() const { return masina; }
 
-    char *getNume() const { return nume; }
+    inline char *getNume() const { return nume; }
 
-    int getSalariu() const { return salariu; }
+    inline int getSalariu() const { return salariu; }
 
-    int getNrComenzi() const { return nrComenzi; }
+    inline int getNrComenzi() const { return nrComenzi; }
 
-    void setMasina(const masinaCurierat &masina_)
+    inline void setMasina(const masinaCurierat &masina_)
     {
         masina = masina_;
     }
 
-    void setNume(char *nume_)
+    inline void setNume(char *nume_)
     {
         delete[] nume;
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
     }
 
-    void setSalariu(int salariu_)
+    inline void setSalariu(int salariu_)
     {
         salariu = salariu_;
     }
 
-    void setNrComenzi(int nrComenzi_)
+    inline void setNrComenzi(int nrComenzi_)
     {
         nrComenzi = nrComenzi_;
     }
@@ -592,28 +592,28 @@ public:
         return *this;
     }
 
-    curier **getCurieri() const { return curieri; }
+    inline curier **getCurieri() const { return curieri; }
 
-    curier *getCurier(int x) { return curieri[x]; }
+    inline curier *getCurier(int x) { return curieri[x]; }
 
-    const char *getNumeComplet() const { return numeComplet; }
+    inline const char *getNumeComplet() const { return numeComplet; }
 
-    const char *getLocatie() const { return locatie; }
+    inline const char *getLocatie() const { return locatie; }
 
-    int getNrComenzi() const { return nrComenzi; }
+    inline int getNrComenzi() const { return nrComenzi; }
 
-    int getNrCurieri() const { return nrCurieri; }
+    inline int getNrCurieri() const { return nrCurieri; }
 
-    void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
+    inline void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
 
-    void setLocatie(char *locatie_)
+    inline void setLocatie(char *locatie_)
     {
         delete[] locatie;
         locatie = new char[strlen(locatie_) + 1];
         strcpy(locatie, locatie_);
     }
 
-    void setNumeComplet(char *numeComplet_)
+    inline void setNumeComplet(char *numeComplet_)
     {
         delete[] numeComplet;
         numeComplet = new char[strlen(numeComplet_) + 1];
