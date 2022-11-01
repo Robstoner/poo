@@ -172,45 +172,45 @@ public:
         return true;
     }
 
-    inline char *getMarca() const { return marca; }
+    [[maybe_unused]] char *getMarca() const { return marca; }
 
-    inline char *getModel() const { return model; }
+    [[maybe_unused]] char *getModel() const { return model; }
 
-    inline char *getNumarInm() const { return numarInm; }
+    [[maybe_unused]] char *getNumarInm() const { return numarInm; }
 
-    inline char *getDataAchizitiei() const { return dataAchizitiei; }
+    [[maybe_unused]] char *getDataAchizitiei() const { return dataAchizitiei; }
 
-    inline char *getUltService() const { return ultService; }
+    [[maybe_unused]] char *getUltService() const { return ultService; }
 
-    inline void setMarca(char *marca_)
+    [[maybe_unused]] void setMarca(char *marca_)
     {
         delete[] marca;
         marca = new char[strlen(marca_) + 1];
         strcpy(marca, marca_);
     }
 
-    inline void setModel(char *model_)
+    [[maybe_unused]] void setModel(char *model_)
     {
         delete[] model;
         model = new char[strlen(model_) + 1];
         strcpy(model, model_);
     }
 
-    inline void setNumarInm(char *numarInm_)
+    [[maybe_unused]] void setNumarInm(char *numarInm_)
     {
         delete[] numarInm;
         numarInm = new char[strlen(numarInm_) + 1];
         strcpy(numarInm, numarInm_);
     }
 
-    inline void setDataAchizitiei(char *dataAchizitiei_)
+    [[maybe_unused]] void setDataAchizitiei(char *dataAchizitiei_)
     {
         delete[] dataAchizitiei;
         dataAchizitiei = new char[strlen(dataAchizitiei_) + 1];
         strcpy(dataAchizitiei, dataAchizitiei_);
     }
 
-    inline void setUltService(char *ultService_)
+    [[maybe_unused]] void setUltService(char *ultService_)
     {
         delete[] ultService;
         ultService = new char[strlen(ultService_) + 1];
@@ -348,30 +348,30 @@ public:
 
     masinaCurierat getMasina() const { return masina; }
 
-    inline char *getNume() const { return nume; }
+    [[maybe_unused]] char *getNume() const { return nume; }
 
-    inline int getSalariu() const { return salariu; }
+    [[maybe_unused]] int getSalariu() const { return salariu; }
 
-    inline int getNrComenzi() const { return nrComenzi; }
+    [[maybe_unused]] int getNrComenzi() const { return nrComenzi; }
 
-    inline void setMasina(const masinaCurierat &masina_)
+    [[maybe_unused]] void setMasina(const masinaCurierat &masina_)
     {
         masina = masina_;
     }
 
-    inline void setNume(char *nume_)
+    [[maybe_unused]] void setNume(char *nume_)
     {
         delete[] nume;
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
     }
 
-    inline void setSalariu(int salariu_)
+    [[maybe_unused]] void setSalariu(int salariu_)
     {
         salariu = salariu_;
     }
 
-    inline void setNrComenzi(int nrComenzi_)
+    [[maybe_unused]] void setNrComenzi(int nrComenzi_)
     {
         nrComenzi = nrComenzi_;
     }
@@ -592,28 +592,28 @@ public:
         return *this;
     }
 
-    inline curier **getCurieri() const { return curieri; }
+    [[maybe_unused]] curier **getCurieri() const { return curieri; }
 
-    inline curier *getCurier(int x) { return curieri[x]; }
+    [[maybe_unused]] curier *getCurier(int x) { return curieri[x]; }
 
-    inline const char *getNumeComplet() const { return numeComplet; }
+    [[maybe_unused]] const char *getNumeComplet() const { return numeComplet; }
 
-    inline const char *getLocatie() const { return locatie; }
+    [[maybe_unused]] const char *getLocatie() const { return locatie; }
 
-    inline int getNrComenzi() const { return nrComenzi; }
+    [[maybe_unused]] int getNrComenzi() const { return nrComenzi; }
 
-    inline int getNrCurieri() const { return nrCurieri; }
+    [[maybe_unused]] int getNrCurieri() const { return nrCurieri; }
 
-    inline void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
+    [[maybe_unused]] void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
 
-    inline void setLocatie(char *locatie_)
+    [[maybe_unused]] void setLocatie(char *locatie_)
     {
         delete[] locatie;
         locatie = new char[strlen(locatie_) + 1];
         strcpy(locatie, locatie_);
     }
 
-    inline void setNumeComplet(char *numeComplet_)
+    [[maybe_unused]] void setNumeComplet(char *numeComplet_)
     {
         delete[] numeComplet;
         numeComplet = new char[strlen(numeComplet_) + 1];
