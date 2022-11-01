@@ -481,7 +481,7 @@ public:
            << f.nrComenzi << '\n';
         for (int i = 0; i < f.nrCurieri; ++i)
         {
-            os << "--- Curierul " << i + 1 << ' ---\n';
+            os << "--- Curierul " << i + 1 << " ---\n";
             os << *f.curieri[i];
         }
 
@@ -577,6 +577,7 @@ public:
 
         curieri[nrCurieri] = new curier;
         *curieri[nrCurieri] = rhs;
+        nrCurieri++;
 
         return *this;
     }
