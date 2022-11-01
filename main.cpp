@@ -78,26 +78,28 @@ public:
 
     masinaCurierat &operator=(const masinaCurierat &m)
     {
-        delete[] marca;
-        marca = new char[strlen(m.marca) + 1];
-        strcpy(marca, m.marca);
+        if (&m != this)
+        {
+            delete[] marca;
+            marca = new char[strlen(m.marca) + 1];
+            strcpy(marca, m.marca);
 
-        delete[] model;
-        model = new char[strlen(m.model) + 1];
-        strcpy(model, m.model);
+            delete[] model;
+            model = new char[strlen(m.model) + 1];
+            strcpy(model, m.model);
 
-        delete[] numarInm;
-        numarInm = new char[strlen(m.numarInm) + 1];
-        strcpy(numarInm, m.numarInm);
+            delete[] numarInm;
+            numarInm = new char[strlen(m.numarInm) + 1];
+            strcpy(numarInm, m.numarInm);
 
-        delete[] dataAchizitiei;
-        dataAchizitiei = new char[strlen(m.dataAchizitiei) + 1];
-        strcpy(dataAchizitiei, m.dataAchizitiei);
+            delete[] dataAchizitiei;
+            dataAchizitiei = new char[strlen(m.dataAchizitiei) + 1];
+            strcpy(dataAchizitiei, m.dataAchizitiei);
 
-        delete[] ultService;
-        ultService = new char[strlen(m.ultService) + 1];
-        strcpy(ultService, m.ultService);
-
+            delete[] ultService;
+            ultService = new char[strlen(m.ultService) + 1];
+            strcpy(ultService, m.ultService);
+        }
         return *this;
     }
 
@@ -272,6 +274,9 @@ public:
 
     curier &operator=(const curier &c)
     {
+        if (&c == this)
+            return *this;
+
         masina = c.masina;
 
         delete[] nume;
@@ -447,6 +452,9 @@ public:
 
     firmaCurierat &operator=(const firmaCurierat &f)
     {
+        if (&f == this)
+            return *this;
+
         for (int i = 0; i < nrCurieri; ++i)
         {
             delete curieri[i];
