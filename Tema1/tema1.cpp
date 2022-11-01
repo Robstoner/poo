@@ -717,7 +717,7 @@ int main()
                  << "3. Inserati o firma de curierat\n"
                  << "4. Creati o firma de curierat, apoi setati locatia ei\n"
                  << "5. Introduceti o masina, apoi creati un curier si setati masina respectiva curierului\n"
-
+                 << "6. Adaugati un curier la o firma de curierat.\n"
                  << "0. Iesire\n";
             cin >> x;
             break;
