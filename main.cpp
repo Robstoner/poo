@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstring>
 
+#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 
 class masinaCurierat
@@ -240,7 +242,7 @@ public:
         nrComenzi = 0;
     }
 
-    curier(const masinaCurierat masina_, char *nume_, int salariu_, int nrComenzi_) : masina(masina_)
+    curier(const masinaCurierat &masina_, char *nume_, int salariu_, int nrComenzi_) : masina(masina_)
     {
 
         nume = new char[strlen(nume_) + 1];
@@ -350,7 +352,7 @@ public:
 
     int getNrComenzi() const { return nrComenzi; }
 
-    void setMasina(const masinaCurierat masina_)
+    void setMasina(const masinaCurierat &masina_)
     {
         masina = masina_;
     }
