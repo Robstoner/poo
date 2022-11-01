@@ -240,9 +240,8 @@ public:
         nrComenzi = 0;
     }
 
-    curier(masinaCurierat masina_, char *nume_, int salariu_, int nrComenzi_)
+    curier(const masinaCurierat masina_, char *nume_, int salariu_, int nrComenzi_) : masina(masina_)
     {
-        masina = masina_;
 
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
@@ -251,9 +250,8 @@ public:
         nrComenzi = nrComenzi_;
     }
 
-    curier(const curier &oldCurier)
+    curier(const curier &oldCurier) : masina(oldCurier.masina)
     {
-        masina = oldCurier.masina;
 
         nume = new char[strlen(oldCurier.nume) + 1];
         strcpy(nume, oldCurier.nume);
@@ -352,7 +350,7 @@ public:
 
     int getNrComenzi() const { return nrComenzi; }
 
-    void setMasina(masinaCurierat masina_)
+    void setMasina(const masinaCurierat masina_)
     {
         masina = masina_;
     }
