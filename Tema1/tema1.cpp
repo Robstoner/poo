@@ -286,11 +286,10 @@ public:
 
     friend ostream &operator<<(ostream &os, const curier &c)
     {
-        os << "--Curier" << '\n';
         os << c.nume << '\n'
            << c.salariu << '\n'
            << c.nrComenzi << '\n';
-        os << "--Masina curierului\n";
+        os << "--- Masina curierului ---\n";
         os << c.masina;
 
         return os;
@@ -482,6 +481,7 @@ public:
            << f.nrComenzi << '\n';
         for (int i = 0; i < f.nrCurieri; ++i)
         {
+            os << "--- Curierul " << i + 1 << ' ---\n';
             os << *f.curieri[i];
         }
 
@@ -494,6 +494,7 @@ public:
 
         char tmp[100];
         cout << "Numele complet: ";
+        is.ignore(1, '\n');
         is.getline(tmp, 99, '\n');
         delete[] f.numeComplet;
         f.numeComplet = new char[strlen(tmp) + 1];
@@ -552,6 +553,34 @@ public:
         // return !(*this == b);
     }
 
+    firmaCurierat &operator+=(const curier &rhs)
+    {
+        curier **tmp = new curier *[nrCurieri];
+        for (int i = 0; i < nrCurieri; ++i)
+        {
+            tmp[i] = new curier;
+            *tmp[i] = *curieri[i];
+        }
+
+        for (int i = 0; i < nrCurieri; ++i)
+        {
+            delete curieri[i];
+        }
+        delete[] curieri;
+
+        curieri = new curier *[nrCurieri + 1];
+        for (int i = 0; i < nrCurieri; ++i)
+        {
+            curieri[i] = new curier;
+            *curieri[i] = *tmp[i];
+        }
+
+        curieri[nrCurieri] = new curier;
+        *curieri[nrCurieri] = rhs;
+
+        return *this;
+    }
+
     curier **getCurieri() const { return curieri; }
 
     curier *getCurier(int x) { return curieri[x]; }
@@ -602,7 +631,7 @@ int main()
          << "3. Inserati o firma de curierat\n"
          << "4. Creati o firma de curierat, apoi setati locatia ei\n"
          << "5. Introduceti o masina, apoi creati un curier si setati masina respectiva curierului\n"
-
+         << "6. Adaugati un curier la o firma de curierat.\n"
          << "0. Iesire\n";
 
     cin >> x;
@@ -661,6 +690,21 @@ int main()
 
             B.setMasina(A);
             cout << B;
+
+            return 0;
+        }
+        case 6:
+        {
+            firmaCurierat A;
+            cout << A;
+            cin >> A;
+            cout << A;
+
+            curier B;
+            cin >> B;
+
+            A += B;
+            cout << A;
 
             return 0;
         }
