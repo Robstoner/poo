@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstring>
 
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 
 class masinaCurierat
@@ -78,26 +81,28 @@ public:
 
     masinaCurierat &operator=(const masinaCurierat &m)
     {
-        delete[] marca;
-        marca = new char[strlen(m.marca) + 1];
-        strcpy(marca, m.marca);
+        if (&m != this)
+        {
+            delete[] marca;
+            marca = new char[strlen(m.marca) + 1];
+            strcpy(marca, m.marca);
 
-        delete[] model;
-        model = new char[strlen(m.model) + 1];
-        strcpy(model, m.model);
+            delete[] model;
+            model = new char[strlen(m.model) + 1];
+            strcpy(model, m.model);
 
-        delete[] numarInm;
-        numarInm = new char[strlen(m.numarInm) + 1];
-        strcpy(numarInm, m.numarInm);
+            delete[] numarInm;
+            numarInm = new char[strlen(m.numarInm) + 1];
+            strcpy(numarInm, m.numarInm);
 
-        delete[] dataAchizitiei;
-        dataAchizitiei = new char[strlen(m.dataAchizitiei) + 1];
-        strcpy(dataAchizitiei, m.dataAchizitiei);
+            delete[] dataAchizitiei;
+            dataAchizitiei = new char[strlen(m.dataAchizitiei) + 1];
+            strcpy(dataAchizitiei, m.dataAchizitiei);
 
-        delete[] ultService;
-        ultService = new char[strlen(m.ultService) + 1];
-        strcpy(ultService, m.ultService);
-
+            delete[] ultService;
+            ultService = new char[strlen(m.ultService) + 1];
+            strcpy(ultService, m.ultService);
+        }
         return *this;
     }
 
@@ -118,7 +123,9 @@ public:
         cout << "Introduceti datele masinii:\n";
         char tmp[500];
         cout << "Marca: ";
-        is >> tmp;
+        is.ignore(1, '\n');
+
+        is.get(tmp, 500);
         delete[] m.marca;
         m.marca = new char[strlen(tmp) + 1];
         strcpy(m.marca, tmp);
@@ -166,45 +173,45 @@ public:
         return true;
     }
 
-    char *getMarca() const { return marca; }
+    [[maybe_unused]] char *getMarca() const { return marca; }
 
-    char *getModel() const { return model; }
+    [[maybe_unused]] char *getModel() const { return model; }
 
-    char *getNumarInm() const { return numarInm; }
+    [[maybe_unused]] char *getNumarInm() const { return numarInm; }
 
-    char *getDataAchizitiei() const { return dataAchizitiei; }
+    [[maybe_unused]] char *getDataAchizitiei() const { return dataAchizitiei; }
 
-    char *getUltService() const { return ultService; }
+    [[maybe_unused]] char *getUltService() const { return ultService; }
 
-    void setMarca(char *marca_)
+    [[maybe_unused]] void setMarca(char *marca_)
     {
         delete[] marca;
         marca = new char[strlen(marca_) + 1];
         strcpy(marca, marca_);
     }
 
-    void setModel(char *model_)
+    [[maybe_unused]] void setModel(char *model_)
     {
         delete[] model;
         model = new char[strlen(model_) + 1];
         strcpy(model, model_);
     }
 
-    void setNumarInm(char *numarInm_)
+    [[maybe_unused]] void setNumarInm(char *numarInm_)
     {
         delete[] numarInm;
         numarInm = new char[strlen(numarInm_) + 1];
         strcpy(numarInm, numarInm_);
     }
 
-    void setDataAchizitiei(char *dataAchizitiei_)
+    [[maybe_unused]] void setDataAchizitiei(char *dataAchizitiei_)
     {
         delete[] dataAchizitiei;
         dataAchizitiei = new char[strlen(dataAchizitiei_) + 1];
         strcpy(dataAchizitiei, dataAchizitiei_);
     }
 
-    void setUltService(char *ultService_)
+    [[maybe_unused]] void setUltService(char *ultService_)
     {
         delete[] ultService;
         ultService = new char[strlen(ultService_) + 1];
@@ -238,9 +245,8 @@ public:
         nrComenzi = 0;
     }
 
-    curier(masinaCurierat masina_, char *nume_, int salariu_, int nrComenzi_)
+    curier(const masinaCurierat &masina_, char *nume_, int salariu_, int nrComenzi_) : masina(masina_)
     {
-        masina = masina_;
 
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
@@ -249,9 +255,8 @@ public:
         nrComenzi = nrComenzi_;
     }
 
-    curier(const curier &oldCurier)
+    curier(const curier &oldCurier) : masina(oldCurier.masina)
     {
-        masina = oldCurier.masina;
 
         nume = new char[strlen(oldCurier.nume) + 1];
         strcpy(nume, oldCurier.nume);
@@ -272,6 +277,9 @@ public:
 
     curier &operator=(const curier &c)
     {
+        if (&c == this)
+            return *this;
+
         masina = c.masina;
 
         delete[] nume;
@@ -341,30 +349,30 @@ public:
 
     masinaCurierat getMasina() const { return masina; }
 
-    char *getNume() const { return nume; }
+    [[maybe_unused]] char *getNume() const { return nume; }
 
-    int getSalariu() const { return salariu; }
+    [[maybe_unused]] int getSalariu() const { return salariu; }
 
-    int getNrComenzi() const { return nrComenzi; }
+    [[maybe_unused]] int getNrComenzi() const { return nrComenzi; }
 
-    void setMasina(masinaCurierat masina_)
+    [[maybe_unused]] void setMasina(const masinaCurierat &masina_)
     {
         masina = masina_;
     }
 
-    void setNume(char *nume_)
+    [[maybe_unused]] void setNume(char *nume_)
     {
         delete[] nume;
         nume = new char[strlen(nume_) + 1];
         strcpy(nume, nume_);
     }
 
-    void setSalariu(int salariu_)
+    [[maybe_unused]] void setSalariu(int salariu_)
     {
         salariu = salariu_;
     }
 
-    void setNrComenzi(int nrComenzi_)
+    [[maybe_unused]] void setNrComenzi(int nrComenzi_)
     {
         nrComenzi = nrComenzi_;
     }
@@ -447,6 +455,9 @@ public:
 
     firmaCurierat &operator=(const firmaCurierat &f)
     {
+        if (&f == this)
+            return *this;
+
         for (int i = 0; i < nrCurieri; ++i)
         {
             delete curieri[i];
@@ -582,28 +593,28 @@ public:
         return *this;
     }
 
-    curier **getCurieri() const { return curieri; }
+    [[maybe_unused]] curier **getCurieri() const { return curieri; }
 
-    curier *getCurier(int x) { return curieri[x]; }
+    [[maybe_unused]] curier *getCurier(int x) { return curieri[x]; }
 
-    const char *getNumeComplet() const { return numeComplet; }
+    [[maybe_unused]] const char *getNumeComplet() const { return numeComplet; }
 
-    const char *getLocatie() const { return locatie; }
+    [[maybe_unused]] const char *getLocatie() const { return locatie; }
 
-    int getNrComenzi() const { return nrComenzi; }
+    [[maybe_unused]] int getNrComenzi() const { return nrComenzi; }
 
-    int getNrCurieri() const { return nrCurieri; }
+    [[maybe_unused]] int getNrCurieri() const { return nrCurieri; }
 
-    void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
+    [[maybe_unused]] void setNrComenzi(int nrComenzi_) { nrComenzi = nrComenzi_; }
 
-    void setLocatie(char *locatie_)
+    [[maybe_unused]] void setLocatie(char *locatie_)
     {
         delete[] locatie;
         locatie = new char[strlen(locatie_) + 1];
         strcpy(locatie, locatie_);
     }
 
-    void setNumeComplet(char *numeComplet_)
+    [[maybe_unused]] void setNumeComplet(char *numeComplet_)
     {
         delete[] numeComplet;
         numeComplet = new char[strlen(numeComplet_) + 1];
