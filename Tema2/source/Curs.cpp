@@ -27,6 +27,11 @@ Curs::~Curs()
     this->studenti.clear();
 }
 
+void Curs::adauga_sala(std::shared_ptr<Sala> sala)
+{
+    this->sali.push_back(sala);
+}
+
 std::string Curs::get_nume() const
 {
     return this->nume;

@@ -9,22 +9,18 @@ Sala::Sala()
     this->echipamente = {};
 }
 
-Sala::Sala(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente)
+Sala::Sala(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente) : nume(nume), echipamente(echipamente)
 {
-    this->nume = nume;
     this->etaj = etaj;
     this->nr_sala = nr_sala;
     this->nr_locuri = nr_locuri;
-    this->echipamente = echipamente;
 }
 
-Sala::Sala(const Sala &sala)
+Sala::Sala(const Sala &sala) : nume(sala.nume), echipamente(sala.echipamente)
 {
-    this->nume = sala.nume;
     this->etaj = sala.etaj;
     this->nr_sala = sala.nr_sala;
     this->nr_locuri = sala.nr_locuri;
-    this->echipamente = sala.echipamente;
 }
 
 Sala &Sala::operator=(const Sala &sala)

@@ -21,6 +21,8 @@ public:
     Curs& operator=(const Curs& curs);
     ~Curs();
 
+    void adauga_sala(std::shared_ptr<Sala> sala);
+
     std::string get_nume() const;
     std::vector<std::shared_ptr<Sala>> get_sali() const;
     std::vector<std::string> get_studenti() const;

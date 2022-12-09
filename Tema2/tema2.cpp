@@ -29,5 +29,9 @@ int main()
 
     Curs curs("POO", sali, {"Andrei", "Ion"});
 
+    Seminar *seminar2 = new Seminar("Seminar 2", 1, 3, 20, echipamente3, Tip_tabla::alba);
+
+    curs.adauga_sala(std::shared_ptr<Sala>(seminar2));
+
     std::cout << curs;
 }

@@ -6,7 +6,7 @@ Laborator::Laborator() : Sala()
     this->nr_calculatoare = 0;
 }
 
-Laborator::Laborator(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente, Tip_tabla tip_tabla, int nr_calculatoare) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
+Laborator::Laborator(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, Tip_tabla tip_tabla, int nr_calculatoare) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
 {
     this->tip_tabla = tip_tabla;
     this->nr_calculatoare = nr_calculatoare;
@@ -67,7 +67,7 @@ int Laborator::get_nr_calculatoare() const
     return this->nr_calculatoare;
 }
 
-void Laborator::set_nume(std::string nume)
+void Laborator::set_nume(const std::string &nume)
 {
     this->nume = nume;
 }
@@ -87,7 +87,7 @@ void Laborator::set_nr_locuri(int nr_locuri)
     this->nr_locuri = nr_locuri;
 }
 
-void Laborator::set_echipamente(std::vector<std::string> echipamente)
+void Laborator::set_echipamente(const std::vector<std::string> &echipamente)
 {
     this->echipamente = echipamente;
 }

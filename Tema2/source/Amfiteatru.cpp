@@ -6,7 +6,7 @@ Amfiteatru::Amfiteatru() : Sala()
     this->nume_amf = "";
 }
 
-Amfiteatru::Amfiteatru(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente, int nr_randuri, std::string nume_amf) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
+Amfiteatru::Amfiteatru(const std::string& nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, int nr_randuri, const std::string &nume_amf) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
 {
     this->nr_randuri = nr_randuri;
     this->nume_amf = nume_amf;
@@ -32,7 +32,7 @@ Amfiteatru::~Amfiteatru()
     this->nume_amf = "";
 }
 
-void Amfiteatru::set_nume(std::string nume)
+void Amfiteatru::set_nume(const std::string &nume)
 {
     this->nume = nume;
 }
@@ -52,7 +52,7 @@ void Amfiteatru::set_nr_locuri(int nr_locuri)
     this->nr_locuri = nr_locuri;
 }
 
-void Amfiteatru::set_echipamente(std::vector<std::string> echipamente)
+void Amfiteatru::set_echipamente(const std::vector<std::string> &echipamente)
 {
     this->echipamente = echipamente;
 }
@@ -62,7 +62,7 @@ void Amfiteatru::set_nr_randuri(int nr_randuri)
     this->nr_randuri = nr_randuri;
 }
 
-void Amfiteatru::set_nume_amf(std::string nume_amf)
+void Amfiteatru::set_nume_amf(const std::string &nume_amf)
 {
     this->nume_amf = nume_amf;
 }

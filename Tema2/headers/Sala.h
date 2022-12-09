@@ -18,7 +18,7 @@ protected:
 
 public:
     Sala();
-    Sala(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente);
+    Sala(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente);
     Sala(const Sala &sala);
     virtual Sala &operator=(const Sala &sala);
     virtual ~Sala();
@@ -29,11 +29,11 @@ public:
     virtual int get_nr_locuri() const = 0;
     virtual std::vector<std::string> get_echipamente() const = 0;
 
-    virtual void set_nume(std::string nume) = 0;
+    virtual void set_nume(const std::string &nume) = 0;
     virtual void set_etaj(int etaj) = 0;
     virtual void set_nr_sala(int nr_sala) = 0;
     virtual void set_nr_locuri(int nr_locuri) = 0;
-    virtual void set_echipamente(std::vector<std::string> echipamente) = 0;
+    virtual void set_echipamente(const std::vector<std::string> &echipamente) = 0;
 
     friend std::ostream &operator<<(std::ostream &out, const Sala &sala);
 };

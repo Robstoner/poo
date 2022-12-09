@@ -5,7 +5,7 @@ Seminar::Seminar() : Sala()
     this->tip_tabla = Tip_tabla::alba;
 }
 
-Seminar::Seminar(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente, Tip_tabla tip_tabla) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
+Seminar::Seminar(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, Tip_tabla tip_tabla) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
 {
     this->tip_tabla = tip_tabla;
 }
@@ -57,7 +57,7 @@ Tip_tabla Seminar::get_tip_tabla() const
     return this->tip_tabla;
 }
 
-void Seminar::set_nume(std::string nume)
+void Seminar::set_nume(const std::string &nume)
 {
     this->nume = nume;
 }
@@ -77,7 +77,7 @@ void Seminar::set_nr_locuri(int nr_locuri)
     this->nr_locuri = nr_locuri;
 }
 
-void Seminar::set_echipamente(std::vector<std::string> echipamente)
+void Seminar::set_echipamente(const std::vector<std::string> &echipamente)
 {
     this->echipamente = echipamente;
 }

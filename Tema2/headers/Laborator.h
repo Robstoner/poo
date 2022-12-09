@@ -10,24 +10,24 @@ class Laborator : public Sala
 
 public:
     Laborator();
-    Laborator(std::string nume, int etaj, int nr_sala, int nr_locuri, std::vector<std::string> echipamente, Tip_tabla tip_tabla, int nr_calculatoare);
+    Laborator(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, Tip_tabla tip_tabla, int nr_calculatoare);
     Laborator(const Laborator& laborator);
     Laborator& operator=(const Laborator& laborator);
     ~Laborator();
 
-    std::string get_nume() const;
-    int get_etaj() const;
-    int get_nr_sala() const;
-    int get_nr_locuri() const;
-    std::vector<std::string> get_echipamente() const;
+    std::string get_nume() const override;
+    int get_etaj() const override;
+    int get_nr_sala() const override;
+    int get_nr_locuri() const override;
+    std::vector<std::string> get_echipamente() const override;
     Tip_tabla get_tip_tabla() const;
     int get_nr_calculatoare() const;
 
-    void set_nume(std::string nume);
-    void set_etaj(int etaj);
-    void set_nr_sala(int nr_sala);
-    void set_nr_locuri(int nr_locuri);
-    void set_echipamente(std::vector<std::string> echipamente);
+    void set_nume(const std::string &nume) override;
+    void set_etaj(int etaj) override;
+    void set_nr_sala(int nr_sala) override;
+    void set_nr_locuri(int nr_locuri) override;
+    void set_echipamente(const std::vector<std::string> &echipamente) override;
     void set_tip_tabla(Tip_tabla tip_tabla);
     void set_nr_calculatoare(int nr_calculatoare);
 
