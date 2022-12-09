@@ -49,17 +49,17 @@ std::vector<std::string> Curs::get_studenti() const
 
 void Curs::set_nume(const std::string &nume_)
 {
-    this->nume = nume;
+    this->nume = nume_;
 }
 
 void Curs::set_sali(const std::vector<std::shared_ptr<Sala>> &sali_)
 {
-    this->sali = sali;
+    this->sali = sali_;
 }
 
 void Curs::set_studenti(const std::vector<std::string> &studenti_)
 {
-    this->studenti = studenti;
+    this->studenti = studenti_;
 }
 
 std::ostream& operator<<(std::ostream& out, const Curs& curs)

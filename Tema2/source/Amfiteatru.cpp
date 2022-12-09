@@ -59,12 +59,12 @@ void Amfiteatru::set_echipamente(const std::vector<std::string> &echipamente_)
 
 void Amfiteatru::set_nr_randuri(int nr_randuri_)
 {
-    this->nr_randuri = nr_randuri;
+    this->nr_randuri = nr_randuri_;
 }
 
 void Amfiteatru::set_nume_amf(const std::string &nume_amf_)
 {
-    this->nume_amf = nume_amf;
+    this->nume_amf = nume_amf_;
 }
 
 std::string Amfiteatru::get_nume() const

@@ -84,7 +84,7 @@ void Seminar::set_echipamente(const std::vector<std::string> &echipamente_)
 
 void Seminar::set_tip_tabla(Tip_tabla tip_tabla_)
 {
-    this->tip_tabla = tip_tabla;
+    this->tip_tabla = tip_tabla_;
 }
 
 std::ostream &operator<<(std::ostream &out, const Seminar &seminar)

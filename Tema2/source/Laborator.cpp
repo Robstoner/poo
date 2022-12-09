@@ -94,12 +94,12 @@ void Laborator::set_echipamente(const std::vector<std::string> &echipamente_)
 
 void Laborator::set_tip_tabla(Tip_tabla tip_tabla_)
 {
-    this->tip_tabla = tip_tabla;
+    this->tip_tabla = tip_tabla_;
 }
 
 void Laborator::set_nr_calculatoare(int nr_calculatoare_)
 {
-    this->nr_calculatoare = nr_calculatoare;
+    this->nr_calculatoare = nr_calculatoare_;
 }
 
 std::ostream &operator<<(std::ostream &out, const Laborator &laborator)
