@@ -347,6 +347,7 @@ void InteractiveMenu::showMainMenu()
     }
     catch (const ResetMenuException &e)
     {
+        std::cout << e.what() << std::endl;
         InteractiveMenu::showMenu();
     }
     catch (const InvalidIndexException &e)
