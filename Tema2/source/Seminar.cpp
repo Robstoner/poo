@@ -57,29 +57,29 @@ Tip_tabla Seminar::get_tip_tabla() const
     return this->tip_tabla;
 }
 
-void Seminar::set_nume(const std::string &nume)
+void Seminar::set_nume(const std::string &nume_)
 {
-    this->nume = nume;
+    this->nume = nume_;
 }
 
-void Seminar::set_etaj(int etaj)
+void Seminar::set_etaj(int etaj_)
 {
-    this->etaj = etaj;
+    this->etaj = etaj_;
 }
 
-void Seminar::set_nr_sala(int nr_sala)
+void Seminar::set_nr_sala(int nr_sala_)
 {
-    this->nr_sala = nr_sala;
+    this->nr_sala = nr_sala_;
 }
 
-void Seminar::set_nr_locuri(int nr_locuri)
+void Seminar::set_nr_locuri(int nr_locuri_)
 {
-    this->nr_locuri = nr_locuri;
+    this->nr_locuri = nr_locuri_;
 }
 
-void Seminar::set_echipamente(const std::vector<std::string> &echipamente)
+void Seminar::set_echipamente(const std::vector<std::string> &echipamente_)
 {
-    this->echipamente = echipamente;
+    this->echipamente = echipamente_;
 }
 
 void Seminar::set_tip_tabla(Tip_tabla tip_tabla)

@@ -1,6 +1,6 @@
 #include "../headers/Curs.h"
 
-Curs::Curs(std::string nume, std::vector<std::shared_ptr<Sala>> sali, std::vector<std::string> studenti) : studenti(studenti)
+Curs::Curs(const std::string &nume, const std::vector<std::shared_ptr<Sala>> &sali, const std::vector<std::string> &studenti) : studenti(studenti)
 {
     this->nume = nume;
     this->sali = sali;
@@ -47,17 +47,17 @@ std::vector<std::string> Curs::get_studenti() const
     return this->studenti;
 }
 
-void Curs::set_nume(std::string nume)
+void Curs::set_nume(const std::string &nume)
 {
     this->nume = nume;
 }
 
-void Curs::set_sali(std::vector<std::shared_ptr<Sala>> sali)
+void Curs::set_sali(const std::vector<std::shared_ptr<Sala>> &sali)
 {
     this->sali = sali;
 }
 
-void Curs::set_studenti(std::vector<std::string> studenti)
+void Curs::set_studenti(const std::vector<std::string> &studenti)
 {
     this->studenti = studenti;
 }
@@ -65,7 +65,7 @@ void Curs::set_studenti(std::vector<std::string> studenti)
 std::ostream& operator<<(std::ostream& out, const Curs& curs)
 {
     out << "Nume: " << curs.nume << std::endl;
-    for (auto& sala : curs.sali)
+    for (const auto& sala : curs.sali)
     {
         if ( dynamic_cast<Amfiteatru*>(sala.get()) )
             out << "Amfiteatru: " << *dynamic_cast<Amfiteatru*>(sala.get()) << std::endl;

@@ -67,29 +67,29 @@ int Laborator::get_nr_calculatoare() const
     return this->nr_calculatoare;
 }
 
-void Laborator::set_nume(const std::string &nume)
+void Laborator::set_nume(const std::string &nume_)
 {
-    this->nume = nume;
+    this->nume = nume_;
 }
 
-void Laborator::set_etaj(int etaj)
+void Laborator::set_etaj(int etaj_)
 {
-    this->etaj = etaj;
+    this->etaj = etaj_;
 }
 
-void Laborator::set_nr_sala(int nr_sala)
+void Laborator::set_nr_sala(int nr_sala_)
 {
-    this->nr_sala = nr_sala;
+    this->nr_sala = nr_sala_;
 }
 
-void Laborator::set_nr_locuri(int nr_locuri)
+void Laborator::set_nr_locuri(int nr_locuri_)
 {
-    this->nr_locuri = nr_locuri;
+    this->nr_locuri = nr_locuri_;
 }
 
-void Laborator::set_echipamente(const std::vector<std::string> &echipamente)
+void Laborator::set_echipamente(const std::vector<std::string> &echipamente_)
 {
-    this->echipamente = echipamente;
+    this->echipamente = echipamente_;
 }
 
 void Laborator::set_tip_tabla(Tip_tabla tip_tabla)

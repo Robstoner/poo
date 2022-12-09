@@ -23,11 +23,11 @@ public:
     int get_nr_randuri() const;
     std::string get_nume_amf() const;
 
-    void set_nume(const std::string &nume) override;
-    void set_etaj(int etaj) override;
-    void set_nr_sala(int nr_sala) override;
-    void set_nr_locuri(int nr_locuri) override;
-    void set_echipamente(const std::vector<std::string> &echipamente) override;
+    void set_nume(const std::string &nume_) override;
+    void set_etaj(int etaj_) override;
+    void set_nr_sala(int nr_sala_) override;
+    void set_nr_locuri(int nr_locuri_) override;
+    void set_echipamente(const std::vector<std::string> &echipamente_) override;
     void set_nr_randuri(int nr_randuri);
     void set_nume_amf(const std::string &nume);
 

@@ -32,29 +32,29 @@ Amfiteatru::~Amfiteatru()
     this->nume_amf = "";
 }
 
-void Amfiteatru::set_nume(const std::string &nume)
+void Amfiteatru::set_nume(const std::string &nume_)
 {
-    this->nume = nume;
+    this->nume = nume_;
 }
 
-void Amfiteatru::set_etaj(int etaj)
+void Amfiteatru::set_etaj(int etaj_)
 {
-    this->etaj = etaj;
+    this->etaj = etaj_;
 }
 
-void Amfiteatru::set_nr_sala(int nr_sala)
+void Amfiteatru::set_nr_sala(int nr_sala_)
 {
-    this->nr_sala = nr_sala;
+    this->nr_sala = nr_sala_;
 }
 
-void Amfiteatru::set_nr_locuri(int nr_locuri)
+void Amfiteatru::set_nr_locuri(int nr_locuri_)
 {
-    this->nr_locuri = nr_locuri;
+    this->nr_locuri = nr_locuri_;
 }
 
-void Amfiteatru::set_echipamente(const std::vector<std::string> &echipamente)
+void Amfiteatru::set_echipamente(const std::vector<std::string> &echipamente_)
 {
-    this->echipamente = echipamente;
+    this->echipamente = echipamente_;
 }
 
 void Amfiteatru::set_nr_randuri(int nr_randuri)

@@ -16,7 +16,7 @@ class Curs
     std::vector<std::string> studenti;
 
 public:
-    Curs(std::string nume, std::vector<std::shared_ptr<Sala>> sali, std::vector<std::string> studenti);
+    Curs(const std::string &nume, const std::vector<std::shared_ptr<Sala>> &sali, const std::vector<std::string> &studenti);
     Curs(const Curs& curs);
     Curs& operator=(const Curs& curs);
     ~Curs();
@@ -27,9 +27,9 @@ public:
     std::vector<std::shared_ptr<Sala>> get_sali() const;
     std::vector<std::string> get_studenti() const;
 
-    void set_nume(std::string nume);
-    void set_sali(std::vector<std::shared_ptr<Sala>> sali);
-    void set_studenti(std::vector<std::string> studenti);
+    void set_nume(const std::string &nume);
+    void set_sali(const std::vector<std::shared_ptr<Sala>> &sali);
+    void set_studenti(const std::vector<std::string> &studenti);
 
     friend std::ostream& operator<<(std::ostream& out, const Curs& curs);
 };

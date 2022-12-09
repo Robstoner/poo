@@ -23,11 +23,11 @@ public:
     Tip_tabla get_tip_tabla() const;
     int get_nr_calculatoare() const;
 
-    void set_nume(const std::string &nume) override;
-    void set_etaj(int etaj) override;
-    void set_nr_sala(int nr_sala) override;
-    void set_nr_locuri(int nr_locuri) override;
-    void set_echipamente(const std::vector<std::string> &echipamente) override;
+    void set_nume(const std::string &nume_) override;
+    void set_etaj(int etaj_) override;
+    void set_nr_sala(int nr_sala_) override;
+    void set_nr_locuri(int nr_locuri_) override;
+    void set_echipamente(const std::vector<std::string> &echipamente_) override;
     void set_tip_tabla(Tip_tabla tip_tabla);
     void set_nr_calculatoare(int nr_calculatoare);
 
