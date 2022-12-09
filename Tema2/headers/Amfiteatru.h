@@ -15,21 +15,21 @@ public:
     Amfiteatru& operator=(const Amfiteatru& amfiteatru);
     ~Amfiteatru();
 
-    std::string get_nume() const override;
-    int get_etaj() const override;
-    int get_nr_sala() const override;
-    int get_nr_locuri() const override;
-    std::vector<std::string> get_echipamente() const override;
-    int get_nr_randuri() const;
-    std::string get_nume_amf() const;
+    [[maybe_unused]] std::string get_nume() const override;
+    [[maybe_unused]] int get_etaj() const override;
+    [[maybe_unused]] int get_nr_sala() const override;
+    [[maybe_unused]] int get_nr_locuri() const override;
+    [[maybe_unused]] std::vector<std::string> get_echipamente() const override;
+    [[maybe_unused]] int get_nr_randuri() const;
+    [[maybe_unused]] std::string get_nume_amf() const;
 
-    void set_nume(const std::string &nume_) override;
-    void set_etaj(int etaj_) override;
-    void set_nr_sala(int nr_sala_) override;
-    void set_nr_locuri(int nr_locuri_) override;
-    void set_echipamente(const std::vector<std::string> &echipamente_) override;
-    void set_nr_randuri(int nr_randuri_);
-    void set_nume_amf(const std::string &nume_);
+    [[maybe_unused]] void set_nume(const std::string &nume_) override;
+    [[maybe_unused]] void set_etaj(int etaj_) override;
+    [[maybe_unused]] void set_nr_sala(int nr_sala_) override;
+    [[maybe_unused]] void set_nr_locuri(int nr_locuri_) override;
+    [[maybe_unused]] void set_echipamente(const std::vector<std::string> &echipamente_) override;
+    [[maybe_unused]] void set_nr_randuri(int nr_randuri_);
+    [[maybe_unused]] void set_nume_amf(const std::string &nume_);
 
     friend std::ostream& operator<<(std::ostream& out,  Amfiteatru& amfiteatru);
 };
