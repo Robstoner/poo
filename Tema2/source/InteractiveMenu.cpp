@@ -43,9 +43,9 @@ void InteractiveMenu::showMenu(bool invalid)
     if (invalid)
         std::cin.ignore(255, '\n');
 
-    int option;
-    std::cin >> option;
-    InteractiveMenu::setOption(option);
+    int option_;
+    std::cin >> option_;
+    InteractiveMenu::setOption(option_);
     InteractiveMenu::showMainMenu();
 }
 
