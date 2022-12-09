@@ -41,7 +41,7 @@ void InteractiveMenu::showMenu(bool invalid)
 
     std::cout << "Introduceti optiunea: ";
     if (invalid)
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.ignore(255, '\n');
 
     int option;
     std::cin >> option;
@@ -338,8 +338,8 @@ void InteractiveMenu::showMainMenu()
         default:
         { // Invalid option
             std::cout << "Optiune invalida!" << std::endl;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.ignore(255, '\n');
+            std::cin.ignore(255, '\n');
             throw ResetMenuException();
             break;
         }
