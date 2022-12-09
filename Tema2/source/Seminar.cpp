@@ -1,4 +1,4 @@
-#include "Seminar.h"
+#include "../headers/Seminar.h"
 
 Seminar::Seminar() : Sala()
 {
@@ -87,9 +87,9 @@ void Seminar::set_tip_tabla(Tip_tabla tip_tabla)
     this->tip_tabla = tip_tabla;
 }
 
-std::ostream &operator<<(std::ostream &out, Seminar &seminar)
+std::ostream &operator<<(std::ostream &out, const Seminar &seminar)
 {
-    out << dynamic_cast<Sala &>(seminar) << std::endl;
+    out << dynamic_cast<const Sala &>(seminar) << std::endl;
     out << "Tip tabla: ";
     switch (seminar.get_tip_tabla())
     {

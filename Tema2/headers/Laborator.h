@@ -3,8 +3,6 @@
 
 #include "Sala.h"
 
-enum Tip_tabla {alba, neagra, smart};
-
 class Laborator : public Sala
 {
     Tip_tabla tip_tabla;

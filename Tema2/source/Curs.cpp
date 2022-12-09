@@ -1,29 +1,21 @@
-#include "Curs.h"
+#include "../headers/Curs.h"
 
-Curs::Curs(std::string nume, Amfiteatru Amf, std::shared_ptr<Seminar> Sem, std::shared_ptr<Laborator> Lab, std::vector<std::string> studenti) : Amf(Amf), Sem(Sem), Lab(Lab)
+Curs::Curs(std::string nume, std::vector<std::shared_ptr<Sala>> sali, std::vector<std::string> studenti) : studenti(studenti)
 {
     this->nume = nume;
-    this->Amf = Amf;
-    this->Sem = Sem;
-    this->Lab = Lab;
-    this->studenti = studenti;
+    this->sali = sali;
 }
 
-Curs::Curs(const Curs& curs) : Amf(Amf), Sem(Sem), Lab(Lab)
+Curs::Curs(const Curs& curs) : studenti(curs.studenti)
 {
     this->nume = curs.nume;
-    this->Amf = curs.Amf;
-    this->Sem = curs.Sem;
-    this->Lab = curs.Lab;
-    this->studenti = curs.studenti;
+    this->sali = curs.sali;
 }
 
 Curs& Curs::operator=(const Curs& curs)
 {
     this->nume = curs.nume;
-    this->Amf = curs.Amf;
-    this->Sem = curs.Sem;
-    this->Lab = curs.Lab;
+    this->sali = curs.sali;
     this->studenti = curs.studenti;
     return *this;
 }
@@ -31,9 +23,7 @@ Curs& Curs::operator=(const Curs& curs)
 Curs::~Curs()
 {
     this->nume = "";
-    this->Amf = Amfiteatru();
-    this->Sem = nullptr;
-    this->Lab = nullptr;
+    this->sali.clear();
     this->studenti.clear();
 }
 
@@ -42,19 +32,9 @@ std::string Curs::get_nume() const
     return this->nume;
 }
 
-Amfiteatru Curs::get_Amf() const
+std::vector<std::shared_ptr<Sala>> Curs::get_sali() const
 {
-    return this->Amf;
-}
-
-std::shared_ptr<Seminar> Curs::get_Sem() const
-{
-    return this->Sem;
-}
-
-std::shared_ptr<Laborator> Curs::get_Lab() const
-{
-    return this->Lab;
+    return this->sali;
 }
 
 std::vector<std::string> Curs::get_studenti() const
@@ -67,19 +47,9 @@ void Curs::set_nume(std::string nume)
     this->nume = nume;
 }
 
-void Curs::set_Amf(Amfiteatru Amf)
+void Curs::set_sali(std::vector<std::shared_ptr<Sala>> sali)
 {
-    this->Amf = Amf;
-}
-
-void Curs::set_Sem(std::shared_ptr<Seminar> Sem)
-{
-    this->Sem = Sem;
-}
-
-void Curs::set_Lab(std::shared_ptr<Laborator> Lab)
-{
-    this->Lab = Lab;
+    this->sali = sali;
 }
 
 void Curs::set_studenti(std::vector<std::string> studenti)
@@ -90,9 +60,17 @@ void Curs::set_studenti(std::vector<std::string> studenti)
 std::ostream& operator<<(std::ostream& out, const Curs& curs)
 {
     out << "Nume: " << curs.nume << std::endl;
-    out << "Amfiteatru: " << curs.Amf << std::endl;
-    out << "Seminar: " << *curs.Sem << std::endl;
-    out << "Laborator: " << *curs.Lab << std::endl;
+    for (auto& sala : curs.sali)
+    {
+        if ( dynamic_cast<Amfiteatru*>(sala.get()) )
+            out << "Amfiteatru: " << *dynamic_cast<Amfiteatru*>(sala.get()) << std::endl;
+        else if ( dynamic_cast<Laborator*>(sala.get()) )
+            out << "Laborator: " << *dynamic_cast<Laborator*>(sala.get()) << std::endl;
+        else if ( dynamic_cast<Seminar*>(sala.get()) )
+            out << "Seminar: " << *dynamic_cast<Seminar*>(sala.get()) << std::endl;
+        else
+            out << "Sala: " << *sala << std::endl;
+    }
     out << "Studenti: " << std::endl;
     for (auto& student : curs.studenti)
     {

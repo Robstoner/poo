@@ -58,7 +58,6 @@ std::ostream &operator<<(std::ostream &out, const Sala &sala)
     {
         out << echipament << " ";
     }
-    out << std::endl;
 
     return out;
 }

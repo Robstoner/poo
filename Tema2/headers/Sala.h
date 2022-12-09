@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+enum Tip_tabla {alba, neagra, smart};
+
 class Sala
 {
 protected:

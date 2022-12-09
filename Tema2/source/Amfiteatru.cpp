@@ -105,17 +105,7 @@ std::string Amfiteatru::get_nume_amf() const
 std::ostream &operator<<(std::ostream &out, Amfiteatru &amfiteatru)
 {
     out << dynamic_cast<Sala &>(amfiteatru) << std::endl;
-    out << "Numar randuri: " << amfiteatru.nr_randuri << std::endl;
-    out << "Nume amfiteatru: " << amfiteatru.nume_amf << std::endl;
+    out << "Numar randuri: " << amfiteatru.get_nr_randuri() << std::endl;
+    out << "Nume amfiteatru: " << amfiteatru.get_nume_amf() << std::endl;
     return out;
-}
-
-int main()
-{
-    std::vector<std::string> echipamente;
-    echipamente.push_back("Proiector");
-    echipamente.push_back("Microfon");
-    Amfiteatru amfiteatru("Amfiteatru", 1, 1, 100, echipamente, 10, "Amfiteatrul 1");
-    std::cout << amfiteatru;
-    return 0;
 }
