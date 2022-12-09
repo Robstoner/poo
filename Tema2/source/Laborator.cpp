@@ -92,12 +92,12 @@ void Laborator::set_echipamente(const std::vector<std::string> &echipamente_)
     this->echipamente = echipamente_;
 }
 
-void Laborator::set_tip_tabla(Tip_tabla tip_tabla)
+void Laborator::set_tip_tabla(Tip_tabla tip_tabla_)
 {
     this->tip_tabla = tip_tabla;
 }
 
-void Laborator::set_nr_calculatoare(int nr_calculatoare)
+void Laborator::set_nr_calculatoare(int nr_calculatoare_)
 {
     this->nr_calculatoare = nr_calculatoare;
 }

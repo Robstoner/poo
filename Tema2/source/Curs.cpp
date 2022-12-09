@@ -47,17 +47,17 @@ std::vector<std::string> Curs::get_studenti() const
     return this->studenti;
 }
 
-void Curs::set_nume(const std::string &nume)
+void Curs::set_nume(const std::string &nume_)
 {
     this->nume = nume;
 }
 
-void Curs::set_sali(const std::vector<std::shared_ptr<Sala>> &sali)
+void Curs::set_sali(const std::vector<std::shared_ptr<Sala>> &sali_)
 {
     this->sali = sali;
 }
 
-void Curs::set_studenti(const std::vector<std::string> &studenti)
+void Curs::set_studenti(const std::vector<std::string> &studenti_)
 {
     this->studenti = studenti;
 }
@@ -77,7 +77,7 @@ std::ostream& operator<<(std::ostream& out, const Curs& curs)
             out << "Sala: " << *sala << std::endl;
     }
     out << "Studenti: " << std::endl;
-    for (auto& student : curs.studenti)
+    for (const auto& student : curs.studenti)
     {
         out << student << std::endl;
     }

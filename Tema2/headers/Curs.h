@@ -27,9 +27,9 @@ public:
     std::vector<std::shared_ptr<Sala>> get_sali() const;
     std::vector<std::string> get_studenti() const;
 
-    void set_nume(const std::string &nume);
-    void set_sali(const std::vector<std::shared_ptr<Sala>> &sali);
-    void set_studenti(const std::vector<std::string> &studenti);
+    void set_nume(const std::string &nume_);
+    void set_sali(const std::vector<std::shared_ptr<Sala>> &sali_);
+    void set_studenti(const std::vector<std::string> &studenti_);
 
     friend std::ostream& operator<<(std::ostream& out, const Curs& curs);
 };

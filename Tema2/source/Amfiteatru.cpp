@@ -57,12 +57,12 @@ void Amfiteatru::set_echipamente(const std::vector<std::string> &echipamente_)
     this->echipamente = echipamente_;
 }
 
-void Amfiteatru::set_nr_randuri(int nr_randuri)
+void Amfiteatru::set_nr_randuri(int nr_randuri_)
 {
     this->nr_randuri = nr_randuri;
 }
 
-void Amfiteatru::set_nume_amf(const std::string &nume_amf)
+void Amfiteatru::set_nume_amf(const std::string &nume_amf_)
 {
     this->nume_amf = nume_amf;
 }

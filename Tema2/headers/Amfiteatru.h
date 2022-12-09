@@ -28,8 +28,8 @@ public:
     void set_nr_sala(int nr_sala_) override;
     void set_nr_locuri(int nr_locuri_) override;
     void set_echipamente(const std::vector<std::string> &echipamente_) override;
-    void set_nr_randuri(int nr_randuri);
-    void set_nume_amf(const std::string &nume);
+    void set_nr_randuri(int nr_randuri_);
+    void set_nume_amf(const std::string &nume_);
 
     friend std::ostream& operator<<(std::ostream& out,  Amfiteatru& amfiteatru);
 };

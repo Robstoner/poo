@@ -82,7 +82,7 @@ void Seminar::set_echipamente(const std::vector<std::string> &echipamente_)
     this->echipamente = echipamente_;
 }
 
-void Seminar::set_tip_tabla(Tip_tabla tip_tabla)
+void Seminar::set_tip_tabla(Tip_tabla tip_tabla_)
 {
     this->tip_tabla = tip_tabla;
 }

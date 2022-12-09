@@ -28,8 +28,8 @@ public:
     void set_nr_sala(int nr_sala_) override;
     void set_nr_locuri(int nr_locuri_) override;
     void set_echipamente(const std::vector<std::string> &echipamente_) override;
-    void set_tip_tabla(Tip_tabla tip_tabla);
-    void set_nr_calculatoare(int nr_calculatoare);
+    void set_tip_tabla(Tip_tabla tip_tabla_);
+    void set_nr_calculatoare(int nr_calculatoare_);
 
     friend std::ostream& operator<<(std::ostream& out, const Laborator& laborator);
 };
