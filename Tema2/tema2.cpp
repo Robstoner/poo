@@ -6,6 +6,7 @@
 int main()
 {
     InteractiveMenu::showStartMenu();
+    
     // std::vector<std::string> echipamente;
     // echipamente.push_back("Proiector");
     // echipamente.push_back("Microfon");

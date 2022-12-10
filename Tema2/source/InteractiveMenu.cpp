@@ -72,10 +72,12 @@ void InteractiveMenu::showMainMenu()
         }
         case 2:
         { // Afiseaza curs
-            int i;
+            size_t i;
             std::cout << std::endl
-                      << "Introduceti numarul cursului: ";
+                      << "Introduceti numarul cursului (>0): ";
             std::cin >> i;
+            if (i > cursuri.size() || i == 0)
+                throw InvalidIndexException();
             std::cout << *cursuri[i - 1];
 
             throw ResetMenuException();
@@ -110,9 +112,11 @@ void InteractiveMenu::showMainMenu()
         case 5:
         { // Adauga amfiteatru
             std::cout << std::endl
-                      << "Introduceti numarul cursului: ";
-            int i;
+                      << "Introduceti numarul cursului (>0): ";
+            size_t i;
             std::cin >> i;
+            if (i > cursuri.size() || i == 0)
+                throw InvalidIndexException();
             try
             {
                 std::cout << "Introduceti numele amfiteatrului(salii): ";
@@ -160,9 +164,11 @@ void InteractiveMenu::showMainMenu()
         case 6:
         { // Adauga laborator
             std::cout << std::endl
-                      << "Introduceti numarul cursului: ";
-            int i;
+                      << "Introduceti numarul cursului (>0): ";
+            size_t i;
             std::cin >> i;
+            if (i > cursuri.size() || i == 0)
+                throw InvalidIndexException();
             try
             {
                 std::cout << "Introduceti numele laboratorului(salii): ";
@@ -234,9 +240,11 @@ void InteractiveMenu::showMainMenu()
         case 7:
         { // Adauga seminar
             std::cout << std::endl
-                      << "Introduceti numarul cursului: ";
-            int i;
+                      << "Introduceti numarul cursului (>0): ";
+            size_t i;
             std::cin >> i;
+            if (i > cursuri.size() || i == 0)
+                throw InvalidIndexException();
             try
             {
                 std::cout << "Introduceti numele seminarului(salii): ";
@@ -305,9 +313,11 @@ void InteractiveMenu::showMainMenu()
         case 8:
         { // Adauga profesor
             std::cout << std::endl
-                      << "Introduceti numarul cursului: ";
-            int i;
+                      << "Introduceti numarul cursului (>0): ";
+            size_t i;
             std::cin >> i;
+            if (i > cursuri.size() || i == 0)
+                throw InvalidIndexException();
             try
             {
                 std::cout << "Introduceti numele profesorului: ";
@@ -353,7 +363,7 @@ void InteractiveMenu::showMainMenu()
     catch (const InvalidIndexException &e)
     {
         std::cout << e.what() << std::endl;
-        InteractiveMenu::showMainMenu();
+        InteractiveMenu::showMenu();
     }
     catch (...)
     {
