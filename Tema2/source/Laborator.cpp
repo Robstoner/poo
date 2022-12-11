@@ -123,3 +123,37 @@ std::ostream &operator<<(std::ostream &out, const Laborator &laborator)
     out << "Numar calculatoare: " << laborator.get_nr_calculatoare() << std::endl;
     return out;
 }
+
+std::istream &operator>>(std::istream &in, Laborator &laborator)
+{
+    in >> dynamic_cast<Sala &>(laborator);
+    std::cout << "Tip tabla: ";
+    while (true)
+    {
+        std::string tip_tabla_string;
+        std::cin >> tip_tabla_string;
+        if (tip_tabla_string == "alba")
+        {
+            laborator.set_tip_tabla(Tip_tabla::alba);
+            break;
+        }
+        else if (tip_tabla_string == "neagra")
+        {
+            laborator.set_tip_tabla(Tip_tabla::neagra);
+            break;
+        }
+        else if (tip_tabla_string == "smart")
+        {
+            laborator.set_tip_tabla(Tip_tabla::smart);
+            break;
+        }
+        else
+        {
+            std::cout << "Tipul de tabla nu este valid!" << std::endl;
+            std::cout << "Alegeti unul dintre urmatoarele: alba, neagra, smart" << std::endl;
+        }
+    }
+    std::cout << "Numar calculatoare: ";
+    in >> laborator.nr_calculatoare;
+    return in;
+}

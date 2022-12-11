@@ -32,6 +32,7 @@ public:
     [[maybe_unused]] void set_nr_calculatoare(int nr_calculatoare_);
 
     friend std::ostream& operator<<(std::ostream& out, const Laborator& laborator);
+    friend std::istream& operator>>(std::istream& in, Laborator& laborator);
 };
 
 #endif // TEMA2_LABORATOR_H

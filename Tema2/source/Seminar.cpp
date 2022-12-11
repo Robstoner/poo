@@ -106,3 +106,35 @@ std::ostream &operator<<(std::ostream &out, const Seminar &seminar)
     out << std::endl;
     return out;
 }
+
+std::istream &operator>>(std::istream &in, Seminar &seminar)
+{
+    in >> dynamic_cast<Sala &>(seminar);
+    std::cout << "Tip tabla: ";
+    while (true)
+    {
+        std::string tip_tabla_string;
+        std::cin >> tip_tabla_string;
+        if (tip_tabla_string == "alba")
+        {
+            seminar.set_tip_tabla(Tip_tabla::alba);
+            break;
+        }
+        else if (tip_tabla_string == "neagra")
+        {
+            seminar.set_tip_tabla(Tip_tabla::neagra);
+            break;
+        }
+        else if (tip_tabla_string == "smart")
+        {
+            seminar.set_tip_tabla(Tip_tabla::smart);
+            break;
+        }
+        else
+        {
+            std::cout << "Tipul de tabla nu este valid!" << std::endl;
+            std::cout << "Alegeti unul dintre urmatoarele: alba, neagra, smart" << std::endl;
+        }
+    }
+    return in;
+}

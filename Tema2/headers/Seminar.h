@@ -29,6 +29,7 @@ public:
     [[maybe_unused]] void set_tip_tabla(Tip_tabla tip_tabla_);
 
     friend std::ostream& operator<<(std::ostream& out, const Seminar& seminar);
+    friend std::istream& operator>>(std::istream& in, Seminar& seminar);
 };
 
 #endif // TEMA2_SEMINAR_H

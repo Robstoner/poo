@@ -38,13 +38,29 @@ void InteractiveMenu::showMenu(bool invalid)
               << "8. Adauga profesor" << std::endl
               << "9. Clear console" << std::endl
               << "10. Iesire" << std::endl;
-
+    // if (invalid){
+    //     std::cin.ignore(255, '\n');
+    //     std::cin.ignore(255, ' ');
+    // }
     std::cout << "Introduceti optiunea: ";
+    /// Am incercat sa rezolv problema cand cineva introduce un string in loc de un int, sau prea multe cuvinte la vreun input, dar nu am reusit :/
     if (invalid)
-        std::cin.ignore(255, '\n');
+    {
+        //work
+    }
+    // if (invalid){
+    //     std::cin.ignore(255, '\n');
+    //     std::cin.ignore(255, ' ');
+    // }
 
     int option_;
     std::cin >> option_;
+
+    // if (invalid){
+    //     std::cin.ignore(255, '\n');
+    //     std::cin.ignore(255, '\n');
+    // }
+    
     InteractiveMenu::setOption(option_);
     InteractiveMenu::showMainMenu();
 }
@@ -119,43 +135,16 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                std::cout << "Introduceti numele amfiteatrului(salii): ";
-                std::string nume;
-                std::cin >> nume;
-                std::cout << "Introduceti numarul de locuri: ";
-                int nr_locuri;
-                std::cin >> nr_locuri;
-                std::cout << "Introduceti etajul: ";
-                int etaj;
-                std::cin >> etaj;
-                std::cout << "Introduceti numarul salii: ";
-                int nr_sala;
-                std::cin >> nr_sala;
-                std::cout << "Introduceti numarul de echipamente: ";
-                int nr_echipamente;
-                std::cin >> nr_echipamente;
-                std::vector<std::string> echipamente;
-                for (int j = 0; j < nr_echipamente; ++j)
-                {
-                    std::cout << "Introduceti numele echipamentului: ";
-                    std::string echipament;
-                    std::cin >> echipament;
-                    echipamente.push_back(echipament);
-                }
-                std::cout << "Introduceti numele propriu al amfiteatrului: ";
-                std::string nume_amfiteatru;
-                std::cin >> nume_amfiteatru;
-                std::cout << "Introduceti numarul de randuri: ";
-                int nr_randuri;
-                std::cin >> nr_randuri;
+                Amfiteatru *amf = new Amfiteatru();
 
-                Amfiteatru *amf = new Amfiteatru(nume, etaj, nr_sala, nr_locuri, echipamente, nr_randuri, nume_amfiteatru);
+                std::cin >> *amf;
 
                 cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(amf));
             }
             catch (const SalaExistaException &e)
             {
-                std::cout << e.what() << std::endl << std::endl;
+                std::cout << e.what() << std::endl
+                          << std::endl;
             }
 
             throw ResetMenuException();
@@ -171,67 +160,16 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                std::cout << "Introduceti numele laboratorului(salii): ";
-                std::string nume;
-                std::cin >> nume;
-                std::cout << "Introduceti numarul de locuri: ";
-                int nr_locuri;
-                std::cin >> nr_locuri;
-                std::cout << "Introduceti etajul: ";
-                int etaj;
-                std::cin >> etaj;
-                std::cout << "Introduceti numarul salii: ";
-                int nr_sala;
-                std::cin >> nr_sala;
-                std::cout << "Introduceti numarul de echipamente: ";
-                int nr_echipamente;
-                std::cin >> nr_echipamente;
-                std::vector<std::string> echipamente;
-                for (int j = 0; j < nr_echipamente; ++j)
-                {
-                    std::cout << "Introduceti numele echipamentului: ";
-                    std::string echipament;
-                    std::cin >> echipament;
-                    echipamente.push_back(echipament);
-                }
-                std::cout << "Introduceti tipul de tabla din laborator (alba, neagra, smart): ";
-                Tip_tabla tip_tabla;
-                while (true)
-                {
-                    std::string tip_tabla_string;
-                    std::cin >> tip_tabla_string;
-                    if (tip_tabla_string == "alba")
-                    {
-                        tip_tabla = Tip_tabla::alba;
-                        break;
-                    }
-                    else if (tip_tabla_string == "neagra")
-                    {
-                        tip_tabla = Tip_tabla::neagra;
-                        break;
-                    }
-                    else if (tip_tabla_string == "smart")
-                    {
-                        tip_tabla = Tip_tabla::smart;
-                        break;
-                    }
-                    else
-                    {
-                        std::cout << "Tipul de tabla nu este valid!" << std::endl;
-                        std::cout << "Alegeti unul dintre urmatoarele: alba, neagra, smart" << std::endl;
-                    }
-                }
-                std::cout << "Introduceti numarul de calculatoare: ";
-                int nr_calculatoare;
-                std::cin >> nr_calculatoare;
+                Laborator *lab = new Laborator();
 
-                Laborator *lab = new Laborator(nume, etaj, nr_sala, nr_locuri, echipamente, tip_tabla, nr_calculatoare);
+                std::cin >> *lab;
 
                 cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(lab));
             }
             catch (const SalaExistaException &e)
             {
-                std::cout << e.what() << std::endl << std::endl;
+                std::cout << e.what() << std::endl
+                          << std::endl;
             }
 
             throw ResetMenuException();
@@ -247,64 +185,16 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                std::cout << "Introduceti numele seminarului(salii): ";
-                std::string nume;
-                std::cin >> nume;
-                std::cout << "Introduceti numarul de locuri: ";
-                int nr_locuri;
-                std::cin >> nr_locuri;
-                std::cout << "Introduceti etajul: ";
-                int etaj;
-                std::cin >> etaj;
-                std::cout << "Introduceti numarul salii: ";
-                int nr_sala;
-                std::cin >> nr_sala;
-                std::cout << "Introduceti numarul de echipamente: ";
-                int nr_echipamente;
-                std::cin >> nr_echipamente;
-                std::vector<std::string> echipamente;
-                for (int j = 0; j < nr_echipamente; ++j)
-                {
-                    std::cout << "Introduceti numele echipamentului: ";
-                    std::string echipament;
-                    std::cin >> echipament;
-                    echipamente.push_back(echipament);
-                }
-                std::cout << "Introduceti tipul de tabla din seminar (alba, neagra, smart): ";
-                Tip_tabla tip_tabla;
-                while (true)
-                {
-                    std::string tip_tabla_string;
-                    std::cin >> tip_tabla_string;
-                    if (tip_tabla_string == "alba")
-                    {
-                        tip_tabla = Tip_tabla::alba;
-                        break;
-                    }
-                    else if (tip_tabla_string == "neagra")
-                    {
-                        tip_tabla = Tip_tabla::neagra;
-                        break;
-                    }
-                    else if (tip_tabla_string == "smart")
-                    {
-                        tip_tabla = Tip_tabla::smart;
-                        break;
-                    }
-                    else
-                    {
-                        std::cout << "Tipul de tabla nu este valid!" << std::endl;
-                        std::cout << "Alegeti unul dintre urmatoarele: alba, neagra, smart" << std::endl;
-                    }
-                }
+                Seminar *sem = new Seminar();
 
-                Seminar *sem = new Seminar(nume, etaj, nr_sala, nr_locuri, echipamente, tip_tabla);
+                std::cin >> *sem;
 
                 cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(sem));
             }
             catch (const SalaExistaException &e)
             {
-                std::cout << e.what() << std::endl << std::endl;
+                std::cout << e.what() << std::endl
+                          << std::endl;
             }
 
             throw ResetMenuException();
@@ -328,7 +218,8 @@ void InteractiveMenu::showMainMenu()
             }
             catch (const ProfesorExistaException &e)
             {
-                std::cout << e.what() << std::endl << std::endl;
+                std::cout << e.what() << std::endl
+                          << std::endl;
             }
 
             throw ResetMenuException();
@@ -337,7 +228,7 @@ void InteractiveMenu::showMainMenu()
         case 9:
         { // Clear console
             system("cls");
-            throw ResetMenuException();
+            throw ClearConsoleException();
             break;
         }
         case 10:
@@ -347,13 +238,22 @@ void InteractiveMenu::showMainMenu()
         }
         default:
         { // Invalid option
-            std::cout << "Optiune invalida!" << std::endl;
             std::cin.ignore(255, '\n');
-            std::cin.ignore(255, '\n');
-            throw ResetMenuException();
+            // std::cin.ignore(255, '\n');
+            throw InvalidOptionException();
             break;
         }
         }
+    }
+    catch (const ClearConsoleException &e)
+    {
+        std::cout << e.what() << std::endl;
+        InteractiveMenu::showMenu();
+    }
+    catch (const InvalidOptionException &e)
+    {
+        std::cout << e.what() << std::endl;
+        InteractiveMenu::showMenu(true);
     }
     catch (const ResetMenuException &e)
     {

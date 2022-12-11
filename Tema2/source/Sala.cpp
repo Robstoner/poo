@@ -50,10 +50,36 @@ std::ostream &operator<<(std::ostream &out, const Sala &sala)
     out << "Numar locuri: " << sala.nr_locuri << std::endl;
     out << "Echipamente: ";
 
+    out << sala.echipamente.size() << std::endl;
+
     for (auto echipament : sala.echipamente)
     {
         out << echipament << " ";
     }
 
     return out;
+}
+
+std::istream &operator>>(std::istream &in, Sala &sala)
+{
+    std::cout << "Introduceti numele salii: ";
+    in >> sala.nume;
+    std::cout << "Etaj: ";
+    in >> sala.etaj;
+    std::cout << "Numar sala: ";
+    in >> sala.nr_sala;
+    std::cout << "Numar locuri: ";
+    in >> sala.nr_locuri;
+    std::cout << "Introduceti numarul de echipamente: ";
+    int nr_echipamente;
+    std::cin >> nr_echipamente;
+    for (int j = 0; j < nr_echipamente; ++j)
+    {
+        std::cout << "Introduceti numele echipamentului: ";
+        std::string echipament;
+        std::cin >> echipament;
+        sala.echipamente.push_back(echipament);
+    }
+
+    return in;
 }

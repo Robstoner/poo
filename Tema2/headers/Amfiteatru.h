@@ -31,7 +31,8 @@ public:
     [[maybe_unused]] void set_nr_randuri(int nr_randuri_);
     [[maybe_unused]] void set_nume_amf(const std::string &nume_);
 
-    friend std::ostream& operator<<(std::ostream& out,  Amfiteatru& amfiteatru);
+    friend std::ostream& operator<<(std::ostream& out, const Amfiteatru& amfiteatru);
+    friend std::istream& operator>>(std::istream& in, Amfiteatru& amfiteatru);
 };
 
 #endif // TEMA2_AMFITEATRU_H

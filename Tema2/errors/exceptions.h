@@ -24,6 +24,18 @@ public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
+class ClearConsoleException : public std::exception
+{
+public:
+    [[nodiscard]] const char *what() const noexcept override;
+};
+
+class InvalidOptionException : public std::exception
+{
+public:
+    [[nodiscard]] const char *what() const noexcept override;
+};
+
 class InvalidIndexException : public std::exception
 {
 public:

@@ -36,6 +36,7 @@ public:
     virtual void set_echipamente(const std::vector<std::string> &echipamente) = 0;
 
     friend std::ostream &operator<<(std::ostream &out, const Sala &sala);
+    friend std::istream &operator>>(std::istream &in, Sala &sala);
 };
 
 #endif // TEMA2_SALA_H

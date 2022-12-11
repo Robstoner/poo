@@ -6,7 +6,7 @@ Amfiteatru::Amfiteatru() : Sala()
     this->nume_amf = "";
 }
 
-Amfiteatru::Amfiteatru(const std::string& nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, int nr_randuri, const std::string &nume_amf) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
+Amfiteatru::Amfiteatru(const std::string &nume, int etaj, int nr_sala, int nr_locuri, const std::vector<std::string> &echipamente, int nr_randuri, const std::string &nume_amf) : Sala(nume, etaj, nr_sala, nr_locuri, echipamente)
 {
     this->nr_randuri = nr_randuri;
     this->nume_amf = nume_amf;
@@ -102,10 +102,20 @@ std::string Amfiteatru::get_nume_amf() const
     return this->nume_amf;
 }
 
-std::ostream &operator<<(std::ostream &out, Amfiteatru &amfiteatru)
+std::ostream &operator<<(std::ostream &out, const Amfiteatru &amfiteatru)
 {
-    out << dynamic_cast<Sala &>(amfiteatru) << std::endl;
+    out << dynamic_cast<const Sala &>(amfiteatru) << std::endl;
     out << "Numar randuri: " << amfiteatru.get_nr_randuri() << std::endl;
     out << "Nume amfiteatru: " << amfiteatru.get_nume_amf() << std::endl;
     return out;
+}
+
+std::istream &operator>>(std::istream &in, Amfiteatru &amfiteatru)
+{
+    in >> dynamic_cast<Sala &>(amfiteatru);
+    std::cout << "Numar randuri: ";
+    in >> amfiteatru.nr_randuri;
+    std::cout << "Nume amfiteatru: ";
+    in >> amfiteatru.nume_amf;
+    return in;
 }

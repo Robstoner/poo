@@ -13,7 +13,15 @@ const char *ProfesorExistaException::what() const noexcept {
 }
 
 const char *ResetMenuException::what() const noexcept {
+    return "\n";
+}
+
+const char *ClearConsoleException::what() const noexcept {
     return "Consola a fost curatata.";
+}
+
+const char *InvalidOptionException::what() const noexcept {
+    return "Optiune invalida!";
 }
 
 const char *InvalidIndexException::what() const noexcept {
