@@ -135,11 +135,10 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                Amfiteatru *amf = new Amfiteatru();
-
+                std::shared_ptr<Amfiteatru> amf = std::make_shared<Amfiteatru>();
                 std::cin >> *amf;
 
-                cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(amf));
+                cursuri[i - 1]->adauga_sala(amf);
             }
             catch (const SalaExistaException &e)
             {
@@ -160,8 +159,8 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                Laborator *lab = new Laborator();
-
+                std::shared_ptr<Laborator> lab = std::make_shared<Laborator>();
+            
                 std::cin >> *lab;
 
                 cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(lab));
@@ -185,7 +184,7 @@ void InteractiveMenu::showMainMenu()
                 throw InvalidIndexException();
             try
             {
-                Seminar *sem = new Seminar();
+                std::shared_ptr<Seminar> sem = std::make_shared<Seminar>();
 
                 std::cin >> *sem;
 
