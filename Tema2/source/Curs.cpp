@@ -92,12 +92,13 @@ std::ostream &operator<<(std::ostream &out, const Curs &curs)
     {
         for (const auto &sala : curs.sali)
         {
+            
             if (dynamic_cast<Amfiteatru *>(sala.get()))
-                out << "Amfiteatru: " << *dynamic_cast<Amfiteatru *>(sala.get()) << std::endl;
+                out << "Amfiteatru: " << *dynamic_cast<Amfiteatru *>(sala.get()) << "Numar echipamente: " << sala->get_nr_echipamente() << std::endl;
             else if (dynamic_cast<Laborator *>(sala.get()))
-                out << "Laborator: " << *dynamic_cast<Laborator *>(sala.get()) << std::endl;
+                out << "Laborator: " << *dynamic_cast<Laborator *>(sala.get()) << "Numar echipamente: " << sala->get_nr_echipamente() << std::endl;
             else if (dynamic_cast<Seminar *>(sala.get()))
-                out << "Seminar: " << *dynamic_cast<Seminar *>(sala.get()) << std::endl;
+                out << "Seminar: " << *dynamic_cast<Seminar *>(sala.get()) << "Numar echipamente: " << sala->get_nr_echipamente() << std::endl;
             else
                 throw InvalidSalaException();
         }
