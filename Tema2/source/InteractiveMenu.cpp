@@ -138,7 +138,7 @@ void InteractiveMenu::showMainMenu()
                 std::shared_ptr<Amfiteatru> amf = std::make_shared<Amfiteatru>();
                 std::cin >> *amf;
 
-                cursuri[i - 1]->adauga_sala(amf);
+                cursuri[i - 1]->adauga_sala(std::shared_ptr<Sala>(amf));
             }
             catch (const SalaExistaException &e)
             {
