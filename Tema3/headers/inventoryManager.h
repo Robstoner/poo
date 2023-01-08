@@ -48,7 +48,7 @@ public:
     template <typename U>
     U cloneItem(const std::string &id)
     {
-        return items[id].template clone<U>();
+        return U(items.at(id));
     }
 
     // sablon de proiectare Iterator

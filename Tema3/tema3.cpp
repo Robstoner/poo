@@ -39,5 +39,9 @@ int main()
         std::cout << std::endl;
     }
 
+    std::cout << "Clone item template: " << std::endl;
+
+    manager.cloneItem<InventoryItem>(manager.getRandomItem().getID()).print();
+
     return 0;
 }

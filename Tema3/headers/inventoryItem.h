@@ -14,7 +14,7 @@ private:
 public:
     InventoryItem();
 
-    InventoryItem(const std::string &id, const InventoryItemFlyweight flyweight, int quantity);
+    InventoryItem(const std::string &id, const InventoryItemFlyweight &flyweight, int quantity);
 
     InventoryItem(const InventoryItem &other);
 
