@@ -2,6 +2,10 @@
 #define INVENTORYMANAGER_H
 #include <unordered_map>
 #include "../headers/inventoryItemFlyweightFactory.h"
+#include "../headers/idGenerator.h"
+
+std::mt19937 IDGenerator::rng;
+std::uniform_int_distribution<std::mt19937::result_type> IDGenerator::dist = std::uniform_int_distribution<std::mt19937::result_type>(0, 1000000);
 
 template <typename T>
 class InventoryManager
@@ -11,8 +15,9 @@ private:
     InventoryItemFlyweightFactory flyweightFactory;
 
 public:
-    void addItem(const std::string &id, const std::string &type, const std::string &size, const std::string &color, int quantity)
+    void addItem(const std::string &type, const std::string &size, const std::string &color, int quantity)
     {
+        std::string id = IDGenerator::generateID();
         const InventoryItemFlyweight &flyweight = flyweightFactory.getFlyweight(type, size, color);
         items[id] = T(id, flyweight, quantity);
     }
@@ -25,6 +30,19 @@ public:
     T &getItem(const std::string &id)
     {
         return items[id];
+    }
+
+    T &getRandomItem()
+    {
+        int randomIndex = rand() % items.size();
+        auto it = items.begin();
+        std::advance(it, randomIndex);
+        return it->second;
+    }
+
+    std::unordered_map<std::string, T> &getItems()
+    {
+        return items;
     }
 
     template <typename U>

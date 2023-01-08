@@ -1,8 +1,22 @@
 #include "../headers/inventoryItem.h"
-#include "../headers/idGenerator.h"
 
-InventoryItem::InventoryItem(const std::string &id, const InventoryItemFlyweight &flyweight, int quantity)
+InventoryItem::InventoryItem() : id(""), flyweight(InventoryItemFlyweight()), quantity(0) {}
+
+InventoryItem::InventoryItem(const std::string &id, const InventoryItemFlyweight flyweight, int quantity)
     : id(id), flyweight(flyweight), quantity(quantity) {}
+
+InventoryItem::InventoryItem(const InventoryItem &other) : id(other.id), flyweight(other.flyweight), quantity(other.quantity) {}
+
+const InventoryItem &InventoryItem::operator=(const InventoryItem &other)
+{
+    if (this != &other)
+    {
+        id = other.id;
+        flyweight = other.flyweight;
+        quantity = other.quantity;
+    }
+    return *this;
+}
 
 const std::string &InventoryItem::getID() const
 {

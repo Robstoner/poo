@@ -8,11 +8,17 @@ class InventoryItem : public BaseInventoryItem
 {
 private:
     std::string id;
-    const InventoryItemFlyweight &flyweight;
+    InventoryItemFlyweight flyweight;
     int quantity;
 
 public:
-    InventoryItem(const std::string &id, const InventoryItemFlyweight &flyweight, int quantity);
+    InventoryItem();
+
+    InventoryItem(const std::string &id, const InventoryItemFlyweight flyweight, int quantity);
+
+    InventoryItem(const InventoryItem &other);
+
+    const InventoryItem &operator=(const InventoryItem &other);
 
     const std::string &getID() const;
 
