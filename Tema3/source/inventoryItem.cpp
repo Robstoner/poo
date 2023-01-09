@@ -1,11 +1,11 @@
 #include "../headers/inventoryItem.h"
 
-InventoryItem::InventoryItem() : id(""), flyweight(InventoryItemFlyweight()), quantity(0) {}
+InventoryItem::InventoryItem() : BaseInventoryItem(""), flyweight(InventoryItemFlyweight()), quantity(0) {}
 
 InventoryItem::InventoryItem(const std::string &id, const InventoryItemFlyweight &flyweight, int quantity)
-    : id(id), flyweight(flyweight), quantity(quantity) {}
+    : BaseInventoryItem(id), flyweight(flyweight), quantity(quantity) {}
 
-InventoryItem::InventoryItem(const InventoryItem &other) : id(other.id), flyweight(other.flyweight), quantity(other.quantity) {}
+InventoryItem::InventoryItem(const InventoryItem &other) : BaseInventoryItem(other.id), flyweight(other.flyweight), quantity(other.quantity) {}
 
 const InventoryItem &InventoryItem::operator=(const InventoryItem &other)
 {
@@ -18,10 +18,6 @@ const InventoryItem &InventoryItem::operator=(const InventoryItem &other)
     return *this;
 }
 
-const std::string &InventoryItem::getID() const
-{
-    return id;
-}
 
 const InventoryItemFlyweight &InventoryItem::getFlyweight() const
 {

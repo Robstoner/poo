@@ -7,7 +7,6 @@
 class InventoryItem : public BaseInventoryItem
 {
 private:
-    std::string id;
     InventoryItemFlyweight flyweight;
     int quantity;
 
@@ -20,7 +19,6 @@ public:
 
     const InventoryItem &operator=(const InventoryItem &other);
 
-    const std::string &getID() const;
 
     const InventoryItemFlyweight &getFlyweight() const;
 
