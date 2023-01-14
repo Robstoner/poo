@@ -1,0 +1,45 @@
+Pavilion
+-id generat automat
+-locatia
+-program
+-suprafata
+-numeCoordonator
+-tara
+
+Eveniment abstract
+-numele
+-data si ora
+-durata
+-sala
+-nrMaximVizitatori
+-vizitatori (lista de id - bilete)
+
+Expozitii de arta : eveniment
+-numeLucrare
+-numeArtist
+
+ExpozitiiCulinare : Eveniment
+-listaPreparate
+-bucatar
+
+Spectacol : Eveniment
+-tip
+
+EvenimentCaritabil : Eveniment
+-beneficiar
+-sursaBaniNecesara
+
+Bilet
+-id generat automat
+-nume
+-prenume
+-varsta
+-nationalitate
+-dataInceput
+-dataExpirare
++calculatePret(zile <= 10 ? 30e * zile : 80% * (30e * zile)
+
+cand cineva participa la un eveniment caritabil introduce o suma de bani
+care se scade din suma totala a evenimentului
+
+
