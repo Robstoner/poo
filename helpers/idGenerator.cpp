@@ -1,6 +1,3 @@
-#include <unordered_map>
-#include <string>
-
 class IDGenerator
 {
 private:
@@ -10,14 +7,15 @@ private:
 public:
     static std::string generateID()
     {
-        if (!usedIDs.contains(nextID))
+        std::string s;
+        while (usedIDs.find(nextID) != usedIDs.end())
         {
-            std::string s = "ID" + std::to_string(IDGenerator::nextID++);
+            nextID++;
         }
-        else
-        {
-            IDGenerator::nextID++;
-        }
+
+        s = "ID-" + std::to_string(nextID++);
+
+        return s;
     }
 };
 
