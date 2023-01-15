@@ -42,8 +42,8 @@ endif()
 
 # NOTE: update executable name in .github/workflows/cmake.yml when changing name here
 # add_executable(${PROJECT_NAME} Tema2/tema2.cpp Tema2/source/Sala.cpp Tema2/source/Amfiteatru.cpp Tema2/source/Laborator.cpp Tema2/source/Seminar.cpp Tema2/source/Curs.cpp Tema2/source/InteractiveMenu.cpp Tema2/errors/exceptions.cpp)
-add_executable(${PROJECT_NAME} Tema3/tema3.cpp Tema3/source/inventoryItem.cpp Tema3/source/inventoryItemFlyweight.cpp Tema3/source/inventoryItemFlyweightFactory.cpp Tema3/source/baseInventoryItem.cpp)
-
+# add_executable(${PROJECT_NAME} Tema3/tema3.cpp Tema3/source/inventoryItem.cpp Tema3/source/inventoryItemFlyweight.cpp Tema3/source/inventoryItemFlyweightFactory.cpp Tema3/source/baseInventoryItem.cpp)
+add_executable(${PROJECT_NAME} colocviuLab/main.cpp)
 ###############################################################################
 
 # target definitions
