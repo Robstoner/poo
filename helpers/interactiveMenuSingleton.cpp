@@ -1,8 +1,8 @@
 class InteractiveMenu
 {
 private:
-    std::vector<Tranzactie> tranzactii;
-    std::vector<std::shared_ptr<Masina>> masini;
+    // std::vector<Tranzactie> tranzactii;
+    // std::vector<std::shared_ptr<Masina>> masini;
     int option = 0;
     static InteractiveMenu *singleton;
 
