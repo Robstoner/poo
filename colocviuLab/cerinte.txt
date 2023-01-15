@@ -1,0 +1,30 @@
+Masina - abstract
+int anulInceperiiProd;
+std::string nume;
+std::String model;
+float vitezaMaxima;
+float greutate;
+
+int calculeazaAutonomie() const = 0;
+
+MasinaFosil : Masina
+std::string tipCombustibil;
+int capacitateRezervor;
+
+capacitateRezervor / sqrt(greutate);
+
+MasinaElectrica : Masina
+int capacitateBaterie;
+
+capacitateBaterie / (greutate * greutate);
+
+MasinaHibrida : MasinaFosil, MasinaElectrica
+
+capacitateRezervor / sqrt(greutate) + capacitateBaterie / (greutate * greutate);
+
+Tranzactie
+std::string numeClient;
+std::string dataTranzactie;
+std::vector<std::shared_ptr<Masina>> modeleAchizitionate;
+
+
