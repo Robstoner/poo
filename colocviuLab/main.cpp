@@ -90,6 +90,8 @@ public:
 
     Masina(int anulInceperiiProd, const std::string &nume, const std::string &model, float vitezaMaxima, float greutate);
 
+    virtual ~Masina() = default;
+
     // const int getAnulInceperiiProd() const;
     // const std::string getNume() const;
     // const std::string getModel() const;
@@ -145,6 +147,8 @@ public:
     MasinaFosil(int anulInceperiiProd, const std::string &nume, const std::string &model, float vitezaMaxima,
                 float greutate, const std::string &tipCombustibil, int capacitateRezervor);
 
+    ~MasinaFosil() = default;
+
     // const std::string getTipCombustibil() const;
     // const int getcapacitateRezervor() const;
 
@@ -199,6 +203,8 @@ public:
     MasinaElectrica(int anulInceperiiProd, const std::string &nume, const std::string &model, float vitezaMaxima,
                     float greutate, int capacitateBaterie);
 
+    ~MasinaElectrica() = default;
+
     // const int getCapacitateBaterie() const;
 
     // void setCapacitateBaterie(int capacitateBaterie_);
@@ -248,6 +254,8 @@ public:
     Tranzactie() = default;
 
     Tranzactie(const std::string &numeClient, const std::string &dataTranzactie, const std::vector<std::shared_ptr<Masina>> modeleAchizitionate);
+
+    ~Tranzactie() = default;
 
     void setModeleAchizitionate(std::vector<std::shared_ptr<Masina>> modeleAchizitionate_);
 
@@ -323,31 +331,36 @@ std::istream &operator>>(std::istream &in, Tranzactie &tranzactie)
     return in;
 }
 
+// Singleton design pattern
 class InteractiveMenu
 {
-    static int option;
-    static std::vector<Tranzactie> tranzactii;
-    static std::vector<std::shared_ptr<Masina>> masini;
+private:
+    std::vector<Tranzactie> tranzactii;
+    std::vector<std::shared_ptr<Masina>> masini;
+    int option = 0;
+    static InteractiveMenu *singleton;
+
+    InteractiveMenu();
+    InteractiveMenu(InteractiveMenu &menu) = delete;
+    InteractiveMenu &operator=(InteractiveMenu &obj) = delete;
 
 public:
-    InteractiveMenu();
+    void showStartMenu();
+    void showMenu();
+    void showMainMenu();
     ~InteractiveMenu();
-    static void showStartMenu();
-    static void showMenu();
-    static void showMainMenu();
-    static void setOption(int option_);
+    static InteractiveMenu *getInstance();
 };
-
-int InteractiveMenu::option = 0;
-std::vector<Tranzactie> InteractiveMenu::tranzactii;
-std::vector<std::shared_ptr<Masina>> InteractiveMenu::masini;
 
 InteractiveMenu::InteractiveMenu() {}
 InteractiveMenu::~InteractiveMenu() {}
 
-void InteractiveMenu::setOption(int option_)
+InteractiveMenu *InteractiveMenu::singleton = nullptr;
+InteractiveMenu *InteractiveMenu::getInstance()
 {
-    option = option_;
+    if (singleton == nullptr)
+        singleton = new InteractiveMenu();
+    return singleton;
 }
 
 void InteractiveMenu::showStartMenu()
@@ -355,7 +368,7 @@ void InteractiveMenu::showStartMenu()
     std::cout << "Colocviu - POO - Schmidt Robert-Eduard" << std::endl
               << std::endl;
 
-    InteractiveMenu::showMenu();
+    showMenu();
 }
 
 void InteractiveMenu::showMenu()
@@ -369,11 +382,9 @@ void InteractiveMenu::showMenu()
 
     std::cout << "Introduceti optiunea: ";
 
-    int option_;
-    std::cin >> option_;
+    std::cin >> option;
 
-    InteractiveMenu::setOption(option_);
-    InteractiveMenu::showMainMenu();
+    showMainMenu();
 }
 
 void InteractiveMenu::showMainMenu()
@@ -412,7 +423,7 @@ void InteractiveMenu::showMainMenu()
                 throw TipNuExistaException();
             }
 
-            InteractiveMenu::showMenu();
+            showMenu();
             break;
         }
         case 2:
@@ -423,7 +434,7 @@ void InteractiveMenu::showMainMenu()
 
             tranzactii.push_back(tranzactie);
 
-            InteractiveMenu::showMenu();
+            showMenu();
             break;
         }
         case 0:
@@ -443,13 +454,17 @@ void InteractiveMenu::showMainMenu()
     }
     catch (const InvalidOptionException &e)
     {
-        std::cout << e.what() << std::endl;
-        InteractiveMenu::showMenu();
+        std::cout << std::endl
+                  << e.what() << std::endl
+                  << std::endl;
+        showMenu();
     }
     catch (const TipNuExistaException &e)
     {
-        std::cout << e.what() << std::endl;
-        InteractiveMenu::showMenu();
+        std::cout << std::endl
+                  << e.what() << std::endl
+                  << std::endl;
+        showMenu();
     }
     catch (...)
     {
@@ -476,5 +491,7 @@ int main()
 
     // std::cout << t1;
 
-    InteractiveMenu::showStartMenu();
+    InteractiveMenu *menu = InteractiveMenu::getInstance();
+
+    menu->showStartMenu();
 }
