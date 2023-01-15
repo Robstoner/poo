@@ -14,4 +14,8 @@ public:
    }
 };
 
+std::mt19937 IDGenerator::rng;
+std::uniform_int_distribution<std::mt19937::result_type> IDGenerator::dist = std::uniform_int_distribution<std::mt19937::result_type>(0, 1000000);
+
+
 #endif // IDGENERATOR_H
