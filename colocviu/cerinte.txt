@@ -1,0 +1,42 @@
+Unealta
+std::string serie; // minim 3 lungime
+unsigned int numarSerie; // nenul
+std::string culoare;
+
+serie si numar sunt unice si const
+culoarea trebuie validata
+
+calculeazaTimpDezapezire(float suprafataCuratata)
+calculeazaConsumEnergie(float suprafataCuratata)
+
+LopataElectrica
+int suprafataFaras;
+int capacitateBaterie;
+
+timp = suprafataCuratata / std::sqrt(suprafataFaras)
+consum = std::pow(suprafataCuratata, 2) * capacitateBaterie
+
+Drona
+int altitudineMaxima;
+int nrMotoare;
+
+bool curatatTurturi() srand
+
+timp = std::log(suprafataCuratata) * std::tanh(altitudineMaxima)
+consum - suprafataCuratata * std::pow(nrMotoare, 3)
+
+UnealtaPrototip
+int ceva1;
+int ceva2;
+
+functii la libera alegere;
+
+Echipa
+std::string nume;
+std::string motto;
+std::vector<std::shared_ptr<Unealta>> unelte;
+
+Competitie
+std::string id;
+std::string categorie; // timpMinim sau ConsumMinim
+std::vector<Echipa> echipe;
